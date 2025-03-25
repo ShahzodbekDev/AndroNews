@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroNews</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="error">An Error accurred</string>
+    <string name="invalid_credentials">Invalid Credentials</string>
+    <string name="unknown_error">Unknown erorr</string>
+</resources>
