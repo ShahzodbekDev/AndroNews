@@ -4,6 +4,8 @@ plugins {
 
     id ("kotlin-kapt")
     id ("com.google.dagger.hilt.android")
+
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -72,5 +74,9 @@ dependencies {
     //Hilt
     implementation ("com.google.dagger:hilt-android:2.51.1")
     kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
 
 }

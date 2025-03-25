@@ -7,4 +7,10 @@
     <string name="error">An Error accurred</string>
     <string name="invalid_credentials">Invalid Credentials</string>
     <string name="unknown_error">Unknown erorr</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_title_0">News of\n our time</string>
+    <string name="splash_title_1">Your news your interests</string>
+    <string name="splash_sub_title_0">Tailored for you</string>
+    <string name="splash_sub_title_1">Get the latest information. about the most important news and topics for you</string>
+    <string name="splash_continue">Continue</string>
 </resources>
