@@ -33,6 +33,15 @@
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
+            android:id="@+id/to_interestesFragment"
+            app:destination="@id/interestesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/interestesFragment"
+        android:name="com.example.andronews.presntation.interestes.InterestesFragment"
+        android:label="fragment_interestes"
+        tools:layout="@layout/fragment_interestes" >
+        <action
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>

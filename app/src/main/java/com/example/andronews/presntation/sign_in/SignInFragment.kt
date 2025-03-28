@@ -43,9 +43,14 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
     }
 
     private fun initUi() = with(binding) {
-        signIn.setOnClickListener {
+
+        login.setOnClickListener {
             viewModel.signIn(userName.text.toString(), password.text.toString())
         }
+
+
+
+
     }
 
 }

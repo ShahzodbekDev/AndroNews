@@ -36,9 +36,9 @@ class SignInViewModel @Inject constructor(private val authRepository: AuthReposi
     }
 
     sealed class Event {
-        object InvalidCredentials : Event()
-        object ConnectionError : Event()
-        object Error : Event()
-        object NavigateToHome : Event()
+        data object InvalidCredentials : Event()
+        data object ConnectionError : Event()
+        data object Error : Event()
+        data object NavigateToHome : Event()
     }
 }

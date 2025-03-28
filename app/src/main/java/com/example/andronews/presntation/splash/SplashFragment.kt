@@ -29,7 +29,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
         continueBtn.setOnClickListener {
             if (pager.currentItem == adapter.itemCount -1){
-                findNavController().navigate(SplashFragmentDirections.toSignInFragment())
+                findNavController().navigate(SplashFragmentDirections.toInterestesFragment())
             }else {
                 pager.setCurrentItem(pager.currentItem + 1, true)
             }

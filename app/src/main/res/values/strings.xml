@@ -13,4 +13,17 @@
     <string name="splash_sub_title_0">Tailored for you</string>
     <string name="splash_sub_title_1">Get the latest information. about the most important news and topics for you</string>
     <string name="splash_continue">Continue</string>
+    <string name="interestes_watch_news">Which news do you want to see?</string>
+    <string name="interestes_pick_the_topics">Pick the topics that interest you</string>
+    <string name="interestes_btn_continue">Continue</string>
+    <string name="sign_in_login_text">Login</string>
+    <string name="sign_in_signin_to">Sign in to your account</string>
+    <string name="fragment_sign_in_password">Password</string>
+    <string name="fragment_sign_in_user_name">User name</string>
+    <string name="fragment_sign_in_forgot_password">Forgot your password?</string>
+    <string name="fragment_sign_in_login">Login</string>
+    <string name="fragment_sign_in_or_sing_in_with">or sing in in with</string>
+    <string name="fragment_sign_in_dont_have_account">Don`t have an account?</string>
+    <string name="fragment_sign_in_sign_up">Create</string>
+    <string name="item_interestes_following">Following</string>
 </resources>
