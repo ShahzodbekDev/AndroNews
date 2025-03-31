@@ -1,5 +1,6 @@
 package com.example.andronews.presentation.sign_in
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,14 +23,16 @@ class SignInViewModel @Inject constructor(private val authRepository: AuthReposi
         loading.postValue(true)
         try {
             authRepository.signIn(username, password)
-
+            events.postValue(Event.NavigateToHome)
         } catch (e: Exception) {
             when {
                 e is HttpException && e.code() == 404 -> events.postValue(Event.InvalidCredentials)
+
                 e is IOException -> events.postValue(Event.ConnectionError)
                 else -> events.postValue(Event.Error)
-            }
 
+            }
+            Log.d("tag", "$e")
         } finally {
             loading.postValue(false)
         }

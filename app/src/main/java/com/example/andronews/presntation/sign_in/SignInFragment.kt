@@ -27,6 +27,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             progressBar.isVisible = isLoading
+            login.text = if (isLoading) null else getString(R.string.fragment_sign_in_login)
         }
 
         viewModel.events.observe(viewLifecycleOwner) { event ->
@@ -35,7 +36,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
                 SignInViewModel.Event.ConnectionError -> toast(R.string.connection_error)
                 SignInViewModel.Event.Error -> toast(R.string.error)
                 SignInViewModel.Event.InvalidCredentials -> toast(R.string.invalid_credentials)
-                SignInViewModel.Event.NavigateToHome -> TODO()
+                SignInViewModel.Event.NavigateToHome -> toast(R.string.app_name)
                 else -> toast(R.string.unknown_error)
             }
         }
@@ -47,10 +48,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
         login.setOnClickListener {
             viewModel.signIn(userName.text.toString(), password.text.toString())
         }
-
-
-
-
     }
 
 }
