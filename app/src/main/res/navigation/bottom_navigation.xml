@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/splashFragment">
+    app:startDestination="@+id/signupFragment">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -26,10 +26,12 @@
         android:id="@+id/signInFragment"
         android:name="com.example.andronews.presentation.sign_in.SignInFragment"
         android:label="fragment_sign_in"
-        tools:layout="@layout/fragment_sign_in" >
+        tools:layout="@layout/fragment_sign_in">
         <action
             android:id="@+id/to_signupFragment"
-            app:destination="@id/signupFragment" />
+            app:destination="@id/signupFragment"
+            app:popUpTo="@id/signupFragment"
+            app:popUpToSaveState="true" />
         <action
             android:id="@+id/to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
@@ -38,7 +40,7 @@
         android:id="@+id/splashFragment"
         android:name="com.example.andronews.presntation.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/to_interestesFragment"
             app:destination="@id/interestesFragment" />
@@ -47,7 +49,7 @@
         android:id="@+id/interestesFragment"
         android:name="com.example.andronews.presntation.interestes.InterestesFragment"
         android:label="fragment_interestes"
-        tools:layout="@layout/fragment_interestes" >
+        tools:layout="@layout/fragment_interestes">
         <action
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -56,11 +58,11 @@
         android:id="@+id/signupFragment"
         android:name="com.example.andronews.presntation.sign_up.SignupFragment"
         android:label="SignupFragment"
-        tools:layout="@layout/fragment_sign_up"/>
+        tools:layout="@layout/fragment_sign_up" />
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.andronews.presntation.forgor_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
-        tools:layout="@layout/fragment_forgot_password"/>
+        tools:layout="@layout/fragment_forgot_password" />
 
 </navigation>

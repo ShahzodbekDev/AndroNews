@@ -32,7 +32,6 @@ class SignInViewModel @Inject constructor(private val authRepository: AuthReposi
                 else -> events.postValue(Event.Error)
 
             }
-            Log.d("tag", "$e")
         } finally {
             loading.postValue(false)
         }
