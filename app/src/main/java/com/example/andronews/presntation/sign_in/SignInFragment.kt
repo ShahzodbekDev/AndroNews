@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.andronews.R
 import com.example.andronews.databinding.FragmentSignInBinding
 import com.example.andronews.util.BaseFragment
@@ -47,6 +48,14 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
 
         login.setOnClickListener {
             viewModel.signIn(userName.text.toString(), password.text.toString())
+        }
+
+        create.setOnClickListener {
+            findNavController().navigate(SignInFragmentDirections.toSignupFragment())
+        }
+
+        forgotPassword.setOnClickListener {
+            findNavController().navigate(SignInFragmentDirections.toForgotPasswordFragment())
         }
     }
 

@@ -26,4 +26,14 @@
     <string name="fragment_sign_in_dont_have_account">Don`t have an account?</string>
     <string name="fragment_sign_in_sign_up">Create</string>
     <string name="item_interestes_following">Following</string>
+    <string name="sign_up_register_text">Register</string>
+    <string name="sign_up_fill_the"><![CDATA[Fill the details & create your account]]></string>
+    <string name="fragment_sign_up_email">Email</string>
+    <string name="fragment_sign_up_user_name">User Name</string>
+    <string name="fragment_sign_up_password">Password</string>
+    <string name="fragment_sign_up_register">Register</string>
+    <string name="forgot_password_text">Forgot password</string>
+    <string name="forgot_password_enter_the_email">Enter the email adress assaciated\nwith this account</string>
+    <string name="forgot_password_send">Sent</string>
+    <string name="forgot_password_email">Email</string>
 </resources>
