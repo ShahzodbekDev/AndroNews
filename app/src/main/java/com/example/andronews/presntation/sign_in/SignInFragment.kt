@@ -41,7 +41,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
                 else -> toast(R.string.unknown_error)
             }
         }
-
     }
 
     private fun initUi() = with(binding) {

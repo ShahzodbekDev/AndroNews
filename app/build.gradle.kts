@@ -1,10 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-
+    id ("kotlin-parcelize")
     id ("kotlin-kapt")
     id ("com.google.dagger.hilt.android")
-
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -77,6 +76,11 @@ dependencies {
 
     //glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib:2.0.21")
+
+
 
 
 }

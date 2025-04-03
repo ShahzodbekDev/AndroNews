@@ -44,11 +44,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo(destination: Destination){
-        when(destination){
-            Destination.Home -> navController.navigate(MainDirections.toHomeFragment())
-            Destination.SignIn -> navController.navigate(MainDirections.toSignInFragment())
-            Destination.Splash -> navController.navigate(MainDirections.toSplashFragment())
-        }
+//        when(destination){
+//            Destination.Home -> navController.navigate(MainDirections.toHomeFragment())
+//            Destination.SignIn -> navController.navigate(MainDirections.toSignInFragment())
+//            Destination.Splash -> navController.navigate(MainDirections.toSplashFragment())
+//        }
     }
 
     private fun initUi() = with(binding) {

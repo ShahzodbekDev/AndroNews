@@ -2,35 +2,55 @@ package com.example.andronews.presntation.interestes
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.andronews.R
+import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.databinding.ItemInterestesBinding
 
-class InterestesAdapter : RecyclerView.Adapter<InterestesAdapter.ViewHolder>() {
+class InterestesAdapter(
+    private val interestes: List<Category>,
+    private val onCategoryClick: (Int) -> Unit
+) : RecyclerView.Adapter<InterestesAdapter.ViewHolder>() {
+
 
     class ViewHolder(private val binding: ItemInterestesBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Triple<Int,String,String>) = with(binding) {
-            Glide.with(root.context).load(item.first).into(itemImage)
-            itemName.text = item.second
 
-            if (item.third == "+ follow") {
+
+        fun bind(category: Category, onCategoryClick: (Int) -> Unit) = with(binding) {
+            Glide.with(root.context).load(category.image).into(itemImage)
+            itemName.text = category.name
+
+
+            if (category.isFollowing) {
                 followingBtn.apply {
-                    setBackgroundResource(R.drawable.iinterests_follow_button_background)
-                    setTextColor(ContextCompat.getColor(context,R.color.followText))
+                    text = "+ Follow"
+                    setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            root.context,
+                            R.drawable.iinterests_follow_button_background // Follow holati uchun background
+                        )
+                    )
                 }
 
-            } else {
+            } else{
                 followingBtn.apply {
-                    setBackgroundResource(R.drawable.iinterests_following_button_background)
-                    setTextColor(ContextCompat.getColor(context,R.color.white))
+                    text = "Following"
+                    setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            root.context,
+                            R.drawable.interests_following_button_background // Following holati uchun background
+                        )
+                    )
                 }
             }
+            followingBtn.setOnClickListener {
+                onCategoryClick(category.id)
 
-            followingBtn.text = item.third
-
+            }
         }
     }
 
@@ -38,33 +58,11 @@ class InterestesAdapter : RecyclerView.Adapter<InterestesAdapter.ViewHolder>() {
         ItemInterestesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun getItemCount() = interestList.size
+    override fun getItemCount() = interestes.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(interestList[position])
+        holder.bind(interestes[position], onCategoryClick)
     }
 
-    companion object{
-        val interestList= listOf(
 
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","following"),
-            Triple(R.drawable.sign_in_sign_up_image,"world","+ follow"),
-
-
-        )
-    }
 }

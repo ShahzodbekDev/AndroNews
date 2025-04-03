@@ -26,7 +26,8 @@
     <string name="fragment_sign_up_or_sing_up_with">or sing up with</string>
     <string name="fragment_sign_in_dont_have_account">Don`t have an account?</string>
     <string name="fragment_sign_in_sign_up">Create</string>
-    <string name="item_interestes_following">Following</string>
+    <string name="item_interestes_title_following">Following</string>
+    <string name="item_interestes_title_follow">+ Follow</string>
     <string name="sign_up_register_text">Register</string>
     <string name="sign_up_fill_the"><![CDATA[Fill the details & create your account]]></string>
     <string name="fragment_sign_up_email">Email</string>

@@ -45,12 +45,30 @@
         android:id="@+id/interestesList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/item_interestes"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/continueBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/subTitle" />
+        app:layout_constraintTop_toBottomOf="@id/subTitle"
+        tools:listitem="@layout/item_interestes" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="4dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateTint="#161629"
+        android:indeterminateTintMode="src_atop"
+        app:layout_constraintBottom_toBottomOf="@+id/interestesList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/interestesList" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -60,12 +78,12 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/button_background"
-        app:backgroundTint="@null"
+        android:fontFamily="@font/museo_light"
         android:text="@string/interestes_btn_continue"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:fontFamily="@font/museo_light"
         android:textSize="18sp"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

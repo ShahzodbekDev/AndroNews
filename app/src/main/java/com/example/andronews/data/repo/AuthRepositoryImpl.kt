@@ -1,5 +1,6 @@
 package com.example.andronews.data.repo
 
+import android.util.Log
 import com.example.andronews.data.api.auth.AuthApi
 import com.example.andronews.data.api.auth.dto.AuthResponse
 import com.example.andronews.data.api.auth.dto.SignInRequest
@@ -28,8 +29,8 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun signUp(username: String, email: String, password: String) {
-        val requset = SignUpRequest(username, email, password)
-        val response = authApi.signUp(requset)
+        val request = SignUpRequest(username, email, password)
+        val response = authApi.signUp(request)
         saveUserInfo(response)
     }
 
