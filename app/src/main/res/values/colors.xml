@@ -11,4 +11,5 @@
     <color name="mainTextColor">#303030</color>
     <color name="subTextColor">#979797</color>
     <color name="followText">#5C5C5C</color>
+    <color name="ruby_red">#FF1B1B</color>
 </resources>

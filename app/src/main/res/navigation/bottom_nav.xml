@@ -3,25 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@+id/splashFragment">
+    app:startDestination="@+id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.andronews.presntation.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/bottom_nav_home"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.andronews.presntation.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.andronews.presntation.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.example.andronews.presentation.sign_in.SignInFragment"
@@ -36,20 +26,21 @@
             android:id="@+id/to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.andronews.presntation.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
-            android:id="@+id/to_interestesFragment"
-            app:destination="@id/interestesFragment" />
+            android:id="@+id/to_interestsFragment"
+            app:destination="@id/interestsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/interestesFragment"
-        android:name="com.example.andronews.presntation.interestes.InterestesFragment"
-        android:label="fragment_interestes"
-        tools:layout="@layout/fragment_interestes">
+        android:id="@+id/interestsFragment"
+        android:name="com.example.andronews.presntation.interestes.InterestsFragment"
+        android:label="fragment_interests"
+        tools:layout="@layout/fragment_interests">
         <action
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -79,6 +70,21 @@
         android:id="@+id/to_homeFragment"
         app:destination="@+id/homeFragment"
         app:popUpTo="@id/main"/>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.andronews.presntation.save.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.andronews.presntation.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/myInterestsFragment"
+        android:name="com.example.andronews.presntation.interestes.MyInterestsFragment"
+        android:label="@string/bottom_nav_myinterests"
+        tools:layout="@layout/fragment_myinterests" />
 
 
 </navigation>

@@ -22,7 +22,7 @@
         android:layout_marginBottom="50dp"
         app:backgroundTint="@color/white"
         app:icon="@drawable/ic_contiune"
-        app:iconTint="#FF1B1B"
+        app:iconTint="@color/ruby_red"
         app:iconSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -78,7 +78,7 @@
             app:startIconDrawable="@drawable/ic_user"
             app:startIconMinSize="15dp"
             app:startIconScaleType="fitStart"
-            app:startIconTint="#FF1B1B"
+            app:startIconTint="@color/ruby_red"
             tools:layout_editor_absoluteX="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
             app:layout_constraintBottom_toTopOf="@+id/passwordLayout"
             app:startIconDrawable="@drawable/ic_email"
             app:startIconMinSize="15dp"
-            app:startIconTint="#FF1B1B"
+            app:startIconTint="@color/ruby_red"
             tools:layout_editor_absoluteX="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +135,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:startIconDrawable="@drawable/ic_password"
             app:startIconMinSize="15dp"
-            app:startIconTint="#FF1B1B"
+            app:startIconTint="@color/ruby_red"
             tools:layout_editor_absoluteX="20dp">
 
             <com.google.android.material.textfield.TextInputEditText

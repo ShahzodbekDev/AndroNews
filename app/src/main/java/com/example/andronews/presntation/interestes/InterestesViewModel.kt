@@ -24,6 +24,7 @@ class InterestesViewModel @Inject constructor(
     val error = MutableLiveData(false)
     val loading = MutableLiveData(false)
 
+
     val events = SingleLiveEvent<Event>()
 
     val categories = MutableLiveData<List<Category>>()
