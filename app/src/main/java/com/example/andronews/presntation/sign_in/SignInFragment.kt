@@ -38,7 +38,6 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
                 SignInViewModel.Event.Error -> toast(R.string.error)
                 SignInViewModel.Event.InvalidCredentials -> toast(R.string.invalid_credentials)
                 SignInViewModel.Event.NavigateToHome -> toast(R.string.app_name)
-                else -> toast(R.string.unknown_error)
             }
         }
     }

@@ -3,6 +3,7 @@ package com.example.andronews.data.repo
 import android.util.Log
 import com.example.andronews.data.api.auth.AuthApi
 import com.example.andronews.data.api.auth.dto.AuthResponse
+import com.example.andronews.data.api.auth.dto.ForgotPasswordRequest
 import com.example.andronews.data.api.auth.dto.SignInRequest
 import com.example.andronews.data.api.auth.dto.SignUpRequest
 import com.example.andronews.data.store.SplashedStore
@@ -32,6 +33,11 @@ class AuthRepositoryImpl @Inject constructor(
         val request = SignUpRequest(username, email, password)
         val response = authApi.signUp(request)
         saveUserInfo(response)
+    }
+
+    override suspend fun forgotPassword(email: String) {
+        val request = ForgotPasswordRequest(email)
+        authApi.forgotPassword(request)
     }
 
     override fun destinationFlow() = channelFlow {

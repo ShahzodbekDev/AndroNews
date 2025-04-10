@@ -36,7 +36,7 @@
     <string name="fragment_sign_up_register">Register</string>
     <string name="forgot_password_text">Forgot password</string>
     <string name="forgot_password_enter_the_email">Enter the email adress assaciated\nwith this account</string>
-    <string name="forgot_password_send">Sent</string>
+    <string name="forgot_password_send">Send</string>
     <string name="forgot_password_email">Email</string>
     <string name="already_registered">This email already registered</string>
     <string name="interests_name">World</string>

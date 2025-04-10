@@ -8,6 +8,8 @@ interface AuthRepository {
 
     suspend fun signUp(username: String, email: String, password: String)
 
+    suspend fun forgotPassword(email: String)
+
     fun destinationFlow() : Flow<Destination>
 
     suspend fun splashed()
