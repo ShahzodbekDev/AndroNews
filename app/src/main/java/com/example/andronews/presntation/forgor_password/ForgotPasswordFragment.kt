@@ -10,6 +10,7 @@ import com.example.andronews.R
 import com.example.andronews.databinding.FragmentForgotPasswordBinding
 import com.example.andronews.presentation.sign_in.SignInViewModel
 import com.example.andronews.util.BaseFragment
+import com.example.andronews.util.clearLightStatusBar
 import com.example.andronews.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +43,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>(Fragm
     }
 
     private fun initUi() = with(binding) {
+        clearLightStatusBar()
         send.setOnClickListener {
             viewModel.forgotPassword(email.text.toString())
         }

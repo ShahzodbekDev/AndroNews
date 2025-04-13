@@ -44,7 +44,8 @@ class AuthRepositoryImpl @Inject constructor(
         suspend fun sendDestination() {
             when {
                 tokenStore.get() != null -> send(Destination.Home)
-                splashedStore.get() == true -> send(Destination.SignIn)
+                splashedStore.get() == true -> send(Destination.Interests)
+
                 else -> send(Destination.Splash)
 
             }

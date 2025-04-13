@@ -4,4 +4,12 @@
         <item name="fontFamily">@font/museo_light</item>
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="CustomTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textColor">@color/charcoal_gray</item>
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/museo_light</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
 </resources>

@@ -54,4 +54,11 @@
     <string name="bottom_nav_myinterests">My Interests</string>
     <string name="navigation_drawer_open">Manu open</string>
     <string name="navigation_drawer_close">Manu colse</string>
+    <string name="news_category_title">%s</string>
+    <string name="news_title">%s</string>
+    <string name="news_add_time">%s</string>
+    <string name="news_comment_count">%d</string>
+    <string name="news_view_users">%d</string>
+    <string name="error_text">An error accurred...</string>
+    <string name="retry_text">Retry</string>
 </resources>

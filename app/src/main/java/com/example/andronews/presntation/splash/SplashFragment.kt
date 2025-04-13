@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.andronews.R
 import com.example.andronews.databinding.FragmentSplashBinding
 import com.example.andronews.util.BaseFragment
+import com.example.andronews.util.clearLightStatusBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +26,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
     }
 
     private fun initUi() = with(binding){
-
+        clearLightStatusBar()
         pager.adapter = adapter
 
         continueBtn.setOnClickListener {

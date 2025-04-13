@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id ("kotlin-parcelize")
-    id ("kotlin-kapt")
-    id ("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -59,28 +59,28 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.11.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
-//datastor
-    implementation ("androidx.datastore:datastore-preferences:1.1.3")
+    //datastor
+    implementation("androidx.datastore:datastore-preferences:1.1.3")
 
     //Navigation component
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.8.9")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.8.9")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.9")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.9")
 
     //Hilt
-    implementation ("com.google.dagger:hilt-android:2.51.1")
-    kapt ("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
 
     //glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    //swiperefreshlayout
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib:2.0.21")
-
-
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.21")
 
 
 }

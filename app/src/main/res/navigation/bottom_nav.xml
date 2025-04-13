@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    app:startDestination="@+id/homeFragment">
+    app:startDestination="@+id/splashFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -38,9 +38,9 @@
     </fragment>
     <fragment
         android:id="@+id/interestsFragment"
-        android:name="com.example.andronews.presntation.interestes.InterestsFragment"
+        android:name="com.example.andronews.presntation.category.CategoryFragment"
         android:label="fragment_interests"
-        tools:layout="@layout/fragment_interests">
+        tools:layout="@layout/fragment_category">
         <action
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
@@ -70,6 +70,10 @@
         android:id="@+id/to_homeFragment"
         app:destination="@+id/homeFragment"
         app:popUpTo="@id/main"/>
+
+    <action android:id="@id/to_interestsFragment"
+        app:destination="@id/interestsFragment"
+        app:popUpTo="@id/main"/>
     <fragment
         android:id="@+id/saveFragment"
         android:name="com.example.andronews.presntation.save.SaveFragment"
@@ -82,7 +86,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/myInterestsFragment"
-        android:name="com.example.andronews.presntation.interestes.MyInterestsFragment"
+        android:name="com.example.andronews.presntation.category.MyInterestsFragment"
         android:label="@string/bottom_nav_myinterests"
         tools:layout="@layout/fragment_myinterests" />
 

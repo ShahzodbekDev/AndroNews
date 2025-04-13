@@ -7,6 +7,10 @@ import android.util.TypedValue
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -36,23 +40,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        val menuView = bottomNav.getChildAt(0) as BottomNavigationMenuView
-
-        for (i in 0 until menuView.childCount) {
-            val itemView = menuView.getChildAt(i)
-            itemView.setBackgroundResource(R.drawable.bottom_nav_item_bg)
-
-            val layoutParams = itemView.layoutParams
-            layoutParams.width = dpToPx(60)
-            layoutParams.height = dpToPx(30)
-            itemView.layoutParams = layoutParams
-
-            itemView.setPadding(0, 10, 0, 10)
-
-        }
-
-
         initUi()
         subscribeToLiveData()
 
@@ -68,54 +55,74 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo(destination: Destination) {
-        when(destination){
+        when (destination) {
             Destination.Home -> navController.navigate(MainDirections.toHomeFragment())
             Destination.SignIn -> navController.navigate(MainDirections.toSignInFragment())
             Destination.Splash -> navController.navigate(MainDirections.toSplashFragment())
+            Destination.Interests -> navController.navigate(MainDirections.toInterestsFragment())
         }
     }
 
     private fun initUi() = with(binding) {
 
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment, R.id.myInterestsFragment, R.id.saveFragment, R.id.profileFragment
-            ), drawerLayout
-        )
-
-        val drawerToggle = ActionBarDrawerToggle(
-            this@MainActivity, drawerLayout, toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawerToggle.setHomeAsUpIndicator(R.drawable.ic_toolbar_hamburger)
-        drawerLayout.addDrawerListener(drawerToggle)
-        drawerToggle.syncState()
+        navController.addOnDestinationChangedListener { _, destination, _ ->
 
 
+            val hideDrawerFragments = listOf(
+                R.id.splashFragment,
+                R.id.signupFragment,
+                R.id.signInFragment,
+                R.id.interestsFragment,
+                R.id.forgotPasswordFragment,
+                R.id.saveFragment
+            )
+
+
+            val hideBottomNavFragments = listOf(
+                R.id.splashFragment,
+                R.id.signupFragment,
+                R.id.signInFragment,
+                R.id.interestsFragment,
+                R.id.forgotPasswordFragment,
+            )
+
+
+            if (destination.id in hideDrawerFragments) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+
+                setupToolbarWithDrawer()
+
+                navView.setupWithNavController(navController)
+                bottomNavigation.setupWithNavController(navController)
+            }
+
+
+            bottomNavigation.isVisible = destination.id !in hideBottomNavFragments
+            toolbar.isVisible = destination.id !in hideDrawerFragments
+        }
+
+    }
+
+    private fun setupToolbarWithDrawer() = with(binding) {
         setSupportActionBar(toolbar)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
 
+        toolbar.navigationIcon =
+            ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_toolbar_hamburger)
 
-        navView.setupWithNavController(navController)
-        bottomNavigation.setupWithNavController(navController)
+        toolbar.setNavigationOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-
-    private fun dpToPx(dp: Int): Int {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp.toFloat(),
-            Resources.getSystem().displayMetrics
-        ).toInt()
-    }
-
-
-
 }
 
 

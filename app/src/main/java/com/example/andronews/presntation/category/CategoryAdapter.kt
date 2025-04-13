@@ -1,4 +1,4 @@
-package com.example.andronews.presntation.interestes
+package com.example.andronews.presntation.category
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import com.example.andronews.R
 import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.databinding.ItemInterestesBinding
 
-class InterestsAdapter(
-    private val interests: List<Category>,
+class CategoryAdapter(
+    private val categories: List<Category>,
     private val onCategoryClick: (Int) -> Unit
-) : RecyclerView.Adapter<InterestsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 
     class ViewHolder(private val binding: ItemInterestesBinding) :
@@ -33,7 +33,7 @@ class InterestsAdapter(
         private fun setupFollowButton(category: Category) = with(binding.followingBtn) {
             val context = binding.root.context
             val (textRes, bgRes, textColor) = if (category.isFollowing) {
-                Triple(R.string.item_interests_title_follow, R.drawable.iinterests_follow_button_background, R.color.followText)
+                Triple(R.string.item_interests_title_follow, R.drawable.interests_follow_button_background, R.color.followText)
             } else {
                 Triple(R.string.item_interests_title_following, R.drawable.interests_following_button_background, R.color.white)
             }
@@ -49,10 +49,10 @@ class InterestsAdapter(
         ItemInterestesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-    override fun getItemCount() = interests.size
+    override fun getItemCount() = categories.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(interests[position], onCategoryClick)
+        holder.bind(categories[position], onCategoryClick)
     }
 
 

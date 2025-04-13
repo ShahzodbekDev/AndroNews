@@ -12,4 +12,6 @@
     <color name="subTextColor">#979797</color>
     <color name="followText">#5C5C5C</color>
     <color name="ruby_red">#FF1B1B</color>
+    <color name="charcoal_gray">#404040</color>
+    <color name="mirage">#161629</color>
 </resources>

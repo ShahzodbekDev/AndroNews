@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.andronews.R
 import com.example.andronews.databinding.FragmentSignInBinding
 import com.example.andronews.util.BaseFragment
+import com.example.andronews.util.clearLightStatusBar
 import com.example.andronews.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,7 +44,7 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
     }
 
     private fun initUi() = with(binding) {
-
+        clearLightStatusBar()
         login.setOnClickListener {
             viewModel.signIn(userName.text.toString(), password.text.toString())
         }

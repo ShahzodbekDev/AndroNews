@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.AndroNews" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/ruby_red</item>
 
 
         <item name="android:statusBarColor">@color/transparent</item>
 
-      <item name="android:windowTranslucentNavigation">true</item>
+<!--        <item name="android:windowTranslucentNavigation">true</item>-->
 
     </style>
 
