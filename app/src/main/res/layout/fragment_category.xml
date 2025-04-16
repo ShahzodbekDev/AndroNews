@@ -7,8 +7,8 @@
     tools:context=".presntation.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         android:id="@+id/categoryLayout"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
@@ -47,9 +47,10 @@
             app:layout_constraintTop_toBottomOf="@+id/questionText" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/interestesList"
+            android:id="@+id/categoryList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="20dp"
             android:overScrollMode="never"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/continueBtn"
@@ -57,7 +58,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/subTitle"
-            tools:listitem="@layout/item_interestes" />
+            tools:listitem="@layout/item_category" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -78,11 +79,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    <include
+        android:id="@+id/loading"
+        layout="@layout/view_loading" />
 
-    <include android:id="@+id/loading"
-             layout="@layout/view_loading"/>
-
-    <include android:id="@+id/error"
-             layout="@layout/view_error"/>
+    <include
+        android:id="@+id/error"
+        layout="@layout/view_error" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

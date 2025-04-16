@@ -31,7 +31,7 @@
         android:background="@drawable/news_category_title_background"
         android:fontFamily="@font/museo_light"
         android:padding="0dp"
-        android:text="@string/news_category_title"
+        android:text="@string/banner_news_category_title"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:backgroundTint="@null"

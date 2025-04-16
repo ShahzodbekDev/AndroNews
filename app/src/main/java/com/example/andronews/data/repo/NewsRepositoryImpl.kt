@@ -1,24 +1,48 @@
 package com.example.andronews.data.repo
 
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.liveData
 import com.example.andronews.data.api.news.NewsApi
+import com.example.andronews.data.api.news.paging.NewsPagingSource
 import com.example.andronews.data.api.news.dto.FollowRequest
+import com.example.andronews.data.api.news.dto.HomeResponse
 import com.example.andronews.data.api.news.dto.News
+import com.example.andronews.data.store.UserStore
+import com.example.andronews.domain.model.NewsQuery
 import com.example.andronews.domain.repo.NewsRepository
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
-    private val newsApi: NewsApi
+    private val newsApi: NewsApi,
+    private val userStore: UserStore
 ) : NewsRepository {
-    override suspend fun getCategory() = newsApi.getCategory()
-
-    override suspend fun followToggle(categoryId: Int) {
-        val request = FollowRequest(categoryId)
-        val response = newsApi.followToggle(request)
-        Log.d("tag", "$response")
+    override suspend fun getHome(): HomeResponse {
+        val response = newsApi.getHome()
+        userStore.set(response.user)
+        return response
     }
 
-    override suspend fun getNews() = newsApi.getNews()
+    override suspend fun getCategory() = newsApi.getCategory()
 
+    override suspend fun followToggle(categoryId: String) {
+        val request = FollowRequest(categoryId)
+        val response = newsApi.followToggle(request)
+        Log.d("tag", "id:$categoryId $response")
+    }
+
+    override fun getNews(newsQuery: NewsQuery) = Pager(
+        config = PagingConfig(
+            pageSize = 10,
+            prefetchDistance = 10,
+            enablePlaceholders = false,
+            initialLoadSize = 20
+        ),
+        initialKey = 0,
+        pagingSourceFactory = {
+            NewsPagingSource(newsApi, newsQuery)
+        }
+    ).flow
 
 }

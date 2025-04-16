@@ -7,18 +7,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.andronews.R
 import com.example.andronews.data.api.news.dto.Category
-import com.example.andronews.databinding.ItemInterestesBinding
+import com.example.andronews.databinding.ItemCategoryBinding
 
 class CategoryAdapter(
     private val categories: List<Category>,
-    private val onCategoryClick: (Int) -> Unit
+    private val onCategoryClick: (String) -> Unit
 ) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 
-    class ViewHolder(private val binding: ItemInterestesBinding) :
+    class ViewHolder(private val binding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(category: Category, onCategoryClick: (Int) -> Unit) = with(binding) {
+        fun bind(category: Category, onCategoryClick: (String) -> Unit) = with(binding) {
             Glide.with(root.context).load(category.image).into(image)
             name.text = category.name
 
@@ -28,6 +27,8 @@ class CategoryAdapter(
 
             setupFollowButton(category)
         }
+
+
 
 
         private fun setupFollowButton(category: Category) = with(binding.followingBtn) {
@@ -46,7 +47,7 @@ class CategoryAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        ItemInterestesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     override fun getItemCount() = categories.size

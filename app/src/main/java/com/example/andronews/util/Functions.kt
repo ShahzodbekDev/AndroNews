@@ -13,6 +13,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
+import java.util.concurrent.TimeUnit
 
 
 fun Fragment.toast(message: Int) {
@@ -46,6 +51,30 @@ fun Fragment.clearLightStatusBar() {
         requireActivity().window.decorView.systemUiVisibility = 0
     }
 }
+
+fun getTimeAgo(dateStr: String): String {
+    val format = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+    format.timeZone = TimeZone.getDefault()
+
+    val addDate = format.parse(dateStr) ?: return ""
+    val now = Date()
+
+    val diffInMillis = now.time - addDate.time
+    val minutes = TimeUnit.MILLISECONDS.toMinutes(diffInMillis)
+    val hours = TimeUnit.MILLISECONDS.toHours(diffInMillis)
+    val days = TimeUnit.MILLISECONDS.toDays(diffInMillis)
+
+    return when {
+        minutes < 1 -> "just now"
+        minutes < 60 -> "$minutes min"
+        hours < 24 -> "$hours hour"
+        days < 7 -> "$days day"
+        days < 30 -> "${days / 7} week"
+        days < 365 -> "${days / 30} month"
+        else -> "${days / 365} year"
+    }
+}
+
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }

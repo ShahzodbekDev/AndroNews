@@ -1,142 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presntation.home.HotNewsFragment">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView2"
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/banner"
                 android:layout_width="match_parent"
                 android:layout_height="230dp"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/image"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/gradient_background"
-                    android:padding="24dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/categoryTitle"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@drawable/news_category_title_background"
-                        android:fontFamily="@font/museo_light"
-                        android:padding="0dp"
-                        android:text="@string/news_category_title"
-                        android:textAllCaps="false"
-                        android:textSize="12sp"
-                        app:backgroundTint="@null"
-                        app:layout_constraintBottom_toTopOf="@+id/newsTitle"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/newsTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/avenir_medium"
-                        android:text="Kazakhstan: Plane crashes into building with almost 100 people on board"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/linearLayout2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layout_constraintBottom_toBottomOf="parent">
-
-                        <TextView
-                            android:id="@+id/newsAddTime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="6dp"
-                            android:fontFamily="@font/avenir_light"
-                            android:text="1 hour"
-                            android:textColor="#A8A8A8"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_hour" />
-
-                        <TextView
-                            android:id="@+id/commentCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="20dp"
-                            android:drawablePadding="6dp"
-                            android:fontFamily="@font/avenir_light"
-                            android:text="14"
-                            android:textColor="#A8A8A8"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_comment" />
-
-                        <TextView
-                            android:id="@+id/seeUsers"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="6dp"
-                            android:fontFamily="@font/avenir_light"
-                            android:text="6645"
-                            android:textColor="#A8A8A8"
-                            android:textSize="14sp"
-                            app:drawableStartCompat="@drawable/ic_eye" />
-
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.card.MaterialCardView>
-
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/newsList"
+                android:id="@+id/news"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:clipChildren="false"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:clipToPadding="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+                app:layout_constraintTop_toBottomOf="@+id/banner"
                 tools:listitem="@layout/item_news" />
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -145,4 +46,4 @@
     </ScrollView>
 
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

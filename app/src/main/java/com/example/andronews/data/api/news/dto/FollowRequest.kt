@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class FollowRequest(
     @SerializedName("category_id")
-    val categoryId: Int
+    val categoryId: String
 )

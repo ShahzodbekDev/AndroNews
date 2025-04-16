@@ -37,7 +37,7 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding>(FragmentCategoryB
 
             if (!isNotEmpty) return@observe
 
-            interestesList.adapter = CategoryAdapter(it) { categoryId ->
+            categoryList.adapter = CategoryAdapter(it) { categoryId ->
                 viewModel.followStatus(categoryId)
             }
         }

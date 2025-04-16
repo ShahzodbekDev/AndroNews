@@ -1,13 +1,21 @@
 package com.example.andronews.domain.repo
 
+import androidx.lifecycle.LiveData
+import androidx.paging.PagingData
 import com.example.andronews.data.api.news.dto.Category
+import com.example.andronews.data.api.news.dto.HomeResponse
 import com.example.andronews.data.api.news.dto.News
+import com.example.andronews.domain.model.NewsQuery
+import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
+
+    suspend fun getHome(): HomeResponse
+
     suspend fun getCategory(): List<Category>
 
-    suspend fun followToggle(categoryId: Int)
+    suspend fun followToggle(categoryId: String)
 
-    suspend fun getNews(): List<News>
+    fun getNews(newsQuery: NewsQuery): Flow<PagingData<News>>
 
 }

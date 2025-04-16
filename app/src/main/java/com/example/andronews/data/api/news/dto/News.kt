@@ -19,5 +19,5 @@ data class News(
     @SerializedName("title")
     val title: String,
     @SerializedName("views_count")
-    val viewsCount: Int
+    val viewsCount: Int,
 ):Parcelable

@@ -80,6 +80,9 @@ dependencies {
     //swiperefreshlayout
     implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
+    //Paging3
+    implementation("androidx.paging:paging-runtime:3.3.6")
+
     implementation("org.jetbrains.kotlin:kotlin-stdlib:2.0.21")
 
 
