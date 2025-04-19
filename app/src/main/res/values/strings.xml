@@ -55,6 +55,7 @@
     <string name="navigation_drawer_open">Manu open</string>
     <string name="navigation_drawer_close">Manu colse</string>
     <string name="banner_news_category_title">%s</string>
+    <string name="news_category_title">%s</string>
     <string name="news_title">%s</string>
     <string name="news_add_time">%s</string>
     <string name="news_comment_count">%d</string>
@@ -66,4 +67,5 @@
     <string name="banner_news_comment_count">%d</string>
     <string name="banner_news_views_count">%d</string>
     <string name="my_interests_text">My Interests</string>
+    <string name="fragment_save_delete_history">Delete all</string>
 </resources>

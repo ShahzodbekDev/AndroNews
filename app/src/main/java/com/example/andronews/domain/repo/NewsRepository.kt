@@ -2,6 +2,7 @@ package com.example.andronews.domain.repo
 
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
+import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.data.api.news.dto.HomeResponse
 import com.example.andronews.data.api.news.dto.News
@@ -10,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface NewsRepository {
 
-    suspend fun getHome(): HomeResponse
+    suspend fun getBanners(): List<Banner>
 
     suspend fun getCategory(): List<Category>
 

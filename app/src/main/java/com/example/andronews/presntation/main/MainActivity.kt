@@ -73,8 +73,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signupFragment,
                 R.id.signInFragment,
                 R.id.interestsFragment,
-                R.id.forgotPasswordFragment,
-                R.id.saveFragment
+                R.id.forgotPasswordFragment
             )
 
 

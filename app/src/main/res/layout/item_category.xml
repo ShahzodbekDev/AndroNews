@@ -31,7 +31,7 @@
         android:layout_marginStart="20dp"
         android:textSize="18sp"
         android:fontFamily="@font/museo_light"
-        android:textColor="#4d4d4d"
+        android:textColor="@color/charcoal_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/materialCardView"
         app:layout_constraintTop_toTopOf="parent" />

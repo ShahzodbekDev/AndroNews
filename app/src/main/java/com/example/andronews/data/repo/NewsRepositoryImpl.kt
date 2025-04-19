@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
 import com.example.andronews.data.api.news.NewsApi
+import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.paging.NewsPagingSource
 import com.example.andronews.data.api.news.dto.FollowRequest
 import com.example.andronews.data.api.news.dto.HomeResponse
@@ -16,13 +17,8 @@ import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApi,
-    private val userStore: UserStore
 ) : NewsRepository {
-    override suspend fun getHome(): HomeResponse {
-        val response = newsApi.getHome()
-        userStore.set(response.user)
-        return response
-    }
+    override suspend fun getBanners() = newsApi.getBanners()
 
     override suspend fun getCategory() = newsApi.getCategory()
 
@@ -44,5 +40,8 @@ class NewsRepositoryImpl @Inject constructor(
             NewsPagingSource(newsApi, newsQuery)
         }
     ).flow
+
+
+
 
 }

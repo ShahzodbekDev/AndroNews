@@ -3,6 +3,7 @@ package com.example.andronews.presntation.home.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.data.api.news.dto.HomeResponse
 import com.example.andronews.domain.repo.NewsRepository
 import com.example.andronews.util.SingleLiveEvent
@@ -19,19 +20,18 @@ class HomeViewModel @Inject constructor(
     val error = MutableLiveData(false)
     val events = SingleLiveEvent<Event>()
 
-    val home = MutableLiveData<HomeResponse?>(null)
+    val categories = MutableLiveData<List<Category>?>(null)
     init {
-        getHome()
+        getCategories()
     }
 
-    fun getHome() = viewModelScope.launch {
+
+    fun getCategories() = viewModelScope.launch {
         loading.postValue(true)
         error.postValue(false)
         try {
-            val response = newsRepository.getHome()
-            home.postValue(response)
-
-
+            val response = newsRepository.getCategory()
+            categories.postValue(response)
         } catch (e: Exception) {
             error.postValue(true)
         } finally {

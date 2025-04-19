@@ -46,5 +46,7 @@ class MyInterestsFragment : BaseFragment<FragmentMyinterestsBinding>(FragmentMyi
         error.retry.setOnClickListener {
             viewModel.getCategories()
         }
+
+
     }
 }

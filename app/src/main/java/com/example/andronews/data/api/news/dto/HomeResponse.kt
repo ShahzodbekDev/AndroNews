@@ -1,6 +1,5 @@
 package com.example.andronews.data.api.news.dto
 
-import androidx.paging.PagingData
 import com.example.andronews.data.api.auth.dto.UserDto
 
 data class HomeResponse(

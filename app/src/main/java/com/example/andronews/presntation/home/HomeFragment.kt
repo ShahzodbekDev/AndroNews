@@ -31,38 +31,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         subscribeToLiveData()
     }
 
-    private fun subscribeToLiveData() = with(binding){
+    private fun subscribeToLiveData() = with(binding) {
         viewModel.loading.observe(viewLifecycleOwner) {
             loading.root.isVisible = it
         }
         viewModel.error.observe(viewLifecycleOwner) {
             error.root.isVisible = it
         }
-        viewModel.home.observe(viewLifecycleOwner) {
+        viewModel.categories.observe(viewLifecycleOwner) {
             home.isVisible = it != null
             it ?: return@observe
 
-            val adapter = CategoryPagerAdapter(requireActivity(), it.categories)
+            val adapter = CategoryPagerAdapter(requireActivity(), it)
             pager2.adapter = adapter
 
             TabLayoutMediator(tabLayout, pager2) { tab, position ->
-                tab.text = if (position == 0) "Hot" else it.categories[position - 1].name
+                tab.text = if (position == 0) "Hot" else it[position - 1].name
             }.attach()
         }
-
-
-
-
-
-
     }
 
 
-    private fun initUi() = with(binding){
+    private fun initUi() = with(binding) {
         setLightStatusBar()
-
+        error.retry.setOnClickListener {
+            viewModel.getCategories()
+        }
     }
-
 
 
 }

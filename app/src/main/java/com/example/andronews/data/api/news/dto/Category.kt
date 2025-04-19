@@ -5,7 +5,6 @@ import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
 
 
-@Parcelize
 data class Category(
     @SerializedName("id")
     val id: String,
@@ -15,5 +14,5 @@ data class Category(
     val image: String,
     @SerializedName("isFollowing")
     val isFollowing: Boolean
-) : Parcelable
+)
 

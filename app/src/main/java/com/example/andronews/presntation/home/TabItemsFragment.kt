@@ -1,22 +1,37 @@
 package com.example.andronews.presntation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.example.andronews.data.api.news.dto.Banner
+import com.example.andronews.data.api.news.dto.News
 import com.example.andronews.databinding.FragmentTabItemsBinding
+import com.example.andronews.presntation.home.adapters.BannerAdapter
+import com.example.andronews.presntation.home.adapters.NewsAdapter
 import com.example.andronews.presntation.home.viewModels.TabItemsViewModel
 import com.example.andronews.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsBinding::inflate) {
 
-
     private val viewModel by viewModels<TabItemsViewModel>()
 
+    private val newsAdapter by lazy {
+        NewsAdapter(::onClickNews)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.setCategory(categoryId)
+
+        newsAdapter.addLoadStateListener {
+            viewModel.setLoadState(it)
+        }
 
     }
 
@@ -30,11 +45,27 @@ class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsB
 
     private fun subscribeToLiveData() = with(binding) {
 
+        viewModel.banners.observe(viewLifecycleOwner) {
+            banner.adapter = BannerAdapter(it, ::onClickBanner)
+        }
 
+        viewModel.news.observe(viewLifecycleOwner) {
+            viewLifecycleOwner.lifecycleScope.launch {
+                newsAdapter.submitData(it)
+            }
+        }
 
     }
 
     private fun initUi() = with(binding) {
+
+        scrollView.viewTreeObserver.addOnScrollChangedListener {
+            val scrollY = scrollView.scrollY
+
+            news.isNestedScrollingEnabled = scrollY > 470
+        }
+
+        news.adapter = newsAdapter
 
     }
 
@@ -52,6 +83,14 @@ class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsB
             fragment.arguments = args
             return fragment
         }
+    }
+
+    private fun onClickBanner(banner: Banner) {
+
+    }
+
+    private fun onClickNews(news: News) {
+
     }
 
 }

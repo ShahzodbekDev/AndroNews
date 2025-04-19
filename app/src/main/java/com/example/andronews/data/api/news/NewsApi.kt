@@ -1,5 +1,6 @@
 package com.example.andronews.data.api.news
 
+import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.data.api.news.dto.FollowRequest
 import com.example.andronews.data.api.news.dto.FollowResponse
@@ -13,13 +14,12 @@ import retrofit2.http.Query
 interface NewsApi {
 
 
-    @GET("home")
-    suspend fun getHome() : HomeResponse
+    @GET("banners")
+    suspend fun getBanners() : List<Banner>
 
     @GET("news")
     suspend fun getNews(
         @Query("category_id") categoryId : String?,
-        @Query("is_hot") isHot : Boolean?,
         @Query("page") page : Int,
         @Query("size") size : Int
     ): List<News>
