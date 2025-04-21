@@ -68,4 +68,11 @@
     <string name="banner_news_views_count">%d</string>
     <string name="my_interests_text">My Interests</string>
     <string name="fragment_save_delete_history">Delete all</string>
+    <string name="details_category_name">World</string>
+    <string name="details_news_title">Kazakhstan: Plane crashes into building with almost 100 people on board crashes into</string>
+    <string name="details_news_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placerat risus enim integer leo, facilisis vel. Quisque a fringilla dolor tincidunt integer. Velit aliquam egestas aliquam gravida lacus rhoncus. Quam mauris, viverra maecenas massa. Adipiscing mauris cras massa id fermentum ornare leo morbi arcu. Velit, suspendisse mi, ornare ac. Viverra hendrerit mauris mattis vestibulum eleifend integer. Feugiat diam a, ultrices nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placerat risus enim integer leo, facilisis vel. Quisque a fringilla dolor tincidunt integer. Velit aliquam egestas aliquam gravida lacus rhoncus. Quam mauris, viverra maecenas massa. Adipiscing mauris cras massa id fermentum ornare leo morbi arcu. Velit, suspendisse mi, ornare ac. Viverra hendrerit mauris mattis vestibulum eleifend integer. Feugiat diam a, ultrices nunc. Feugiat diam a, ultrices nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Placerat risus enim integer leo, facilisis vel. Quisque a fringilla dolor tincidunt integer. Velit aliquam egestas aliquam gravida lacus rhoncus. Quam mauris, viverra maecenas massa. Adipiscing mauris cras massa id fermentum ornare leo morbi arcu. Velit, suspendisse mi, ornare ac. Viverra hendrerit mauris mattis vestibulum eleifend integer. Feugiat diam a, ultrices nunc.</string>
+    <string name="details_news_add_time">%s</string>
+    <string name="details_news_view_users">%d</string>
+    <string name="search_input_hint">Search</string>
+    <string name="search_news_title">Search news</string>
 </resources>

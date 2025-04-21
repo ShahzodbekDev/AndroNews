@@ -1,22 +1,23 @@
 package com.example.andronews.presntation.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.News
-import com.example.andronews.databinding.FragmentTabItemsBinding
+import com.example.andronews.databinding.FragmentHomeTabItemsBinding
 import com.example.andronews.presntation.home.adapters.BannerAdapter
 import com.example.andronews.presntation.home.adapters.NewsAdapter
 import com.example.andronews.presntation.home.viewModels.TabItemsViewModel
 import com.example.andronews.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsBinding::inflate) {
+class TabItemsFragment : BaseFragment<FragmentHomeTabItemsBinding>(FragmentHomeTabItemsBinding::inflate) {
 
     private val viewModel by viewModels<TabItemsViewModel>()
 
@@ -49,11 +50,12 @@ class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsB
             banner.adapter = BannerAdapter(it, ::onClickBanner)
         }
 
-        viewModel.news.observe(viewLifecycleOwner) {
-            viewLifecycleOwner.lifecycleScope.launch {
+        lifecycleScope.launch {
+            viewModel.news.collectLatest {
                 newsAdapter.submitData(it)
             }
         }
+
 
     }
 
@@ -90,7 +92,7 @@ class TabItemsFragment : BaseFragment<FragmentTabItemsBinding>(FragmentTabItemsB
     }
 
     private fun onClickNews(news: News) {
-
+        findNavController().navigate(TabItemsFragmentDirections.actionTabItemsFragmentToDetailsFragment())
     }
 
 }

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.andronews.R
 import com.example.andronews.databinding.FragmentForgotPasswordBinding
 import com.example.andronews.presentation.sign_in.SignInViewModel

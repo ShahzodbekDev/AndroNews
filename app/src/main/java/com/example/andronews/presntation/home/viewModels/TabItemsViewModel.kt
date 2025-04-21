@@ -6,15 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.example.andronews.data.api.news.dto.Banner
-import com.example.andronews.data.api.news.dto.News
 import com.example.andronews.domain.model.NewsQuery
 import com.example.andronews.domain.repo.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @HiltViewModel
 class TabItemsViewModel @Inject constructor(
@@ -25,8 +27,18 @@ class TabItemsViewModel @Inject constructor(
 
     val error = MutableLiveData(false)
 
-    val news = MutableLiveData<PagingData<News>>()
-    val category = MutableLiveData<String>()
+
+    private val category = MutableStateFlow<String?>(null)
+
+
+    val news = category
+        .map { it?: "" }
+        .flatMapLatest { categoryId ->
+            newsRepository.getNews(NewsQuery(categoryId = categoryId))
+        }
+        .cachedIn(viewModelScope)
+
+
     val banners = MutableLiveData<List<Banner>>()
 
     init {
@@ -47,21 +59,14 @@ class TabItemsViewModel @Inject constructor(
     }
 
     fun setCategory(categoryId: String?) {
-        this.category.postValue(categoryId)
-        Log.d("tag", "getNewsCategoryId: $categoryId")
-        getNewsByCategory()
+        category.value = categoryId
+        Log.d("tag","categoryId: $categoryId")
     }
-
-    fun getNewsByCategory() = viewModelScope.launch{
-        val query = NewsQuery(categoryId = category.value)
-        newsRepository.getNews(query).collectLatest {
-            news.postValue(it)
-        }
-    }
-
 
     fun setLoadState(states : CombinedLoadStates){
         val loading = states.source.refresh is LoadState.Loading
         this.loading.postValue(loading)
     }
 }
+
+

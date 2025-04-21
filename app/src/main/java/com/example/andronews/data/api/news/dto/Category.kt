@@ -1,7 +1,5 @@
 package com.example.andronews.data.api.news.dto
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
 import com.google.gson.annotations.SerializedName
 
 

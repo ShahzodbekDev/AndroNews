@@ -1,33 +1,23 @@
 package com.example.andronews.presntation.main
 
 import android.annotation.SuppressLint
-import android.content.res.Resources
 import android.os.Bundle
-import android.util.TypedValue
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.andronews.MainDirections
 import com.example.andronews.R
 import com.example.andronews.databinding.ActivityMainBinding
 import com.example.andronews.domain.model.Destination
-import com.google.android.material.bottomnavigation.BottomNavigationMenuView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var appBarConfiguration: AppBarConfiguration
 
     private lateinit var binding: ActivityMainBinding
     private val navController get() = (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
@@ -73,7 +63,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.signupFragment,
                 R.id.signInFragment,
                 R.id.interestsFragment,
-                R.id.forgotPasswordFragment
+                R.id.forgotPasswordFragment,
+                R.id.detailsFragment,
+                R.id.searchFragment
             )
 
 
@@ -83,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment,
                 R.id.interestsFragment,
                 R.id.forgotPasswordFragment,
+                R.id.detailsFragment,
+                R.id.searchFragment
+
             )
 
 
@@ -102,14 +97,20 @@ class MainActivity : AppCompatActivity() {
 
             bottomNavigation.isVisible = destination.id !in hideBottomNavFragments
             toolbar.isVisible = destination.id !in hideDrawerFragments
+
+            search.setOnClickListener {
+                navController.navigate(MainDirections.toSearchFragment())
+            }
         }
 
     }
 
     private fun setupToolbarWithDrawer() = with(binding) {
+
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
+
 
         toolbar.navigationIcon =
             ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_toolbar_hamburger)

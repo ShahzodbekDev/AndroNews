@@ -22,7 +22,8 @@ class NewsViewHolder(private val binding: ItemNewsBinding) : RecyclerView.ViewHo
         viewUsers.text = root.context.getString(R.string.news_view_users, news.viewsCount)
 
         root.setOnClickListener {
-            onClick(news)
+          onClick(news)
         }
     }
+
 }

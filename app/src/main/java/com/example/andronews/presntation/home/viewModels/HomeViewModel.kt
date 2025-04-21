@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.andronews.data.api.news.dto.Category
-import com.example.andronews.data.api.news.dto.HomeResponse
 import com.example.andronews.domain.repo.NewsRepository
 import com.example.andronews.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel

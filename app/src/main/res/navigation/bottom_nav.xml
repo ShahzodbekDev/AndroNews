@@ -9,7 +9,8 @@
         android:id="@+id/homeFragment"
         android:name="com.example.andronews.presntation.home.HomeFragment"
         android:label="@string/bottom_nav_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+    </fragment>
 
 
     <fragment
@@ -54,7 +55,8 @@
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.andronews.presntation.forgor_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
-        tools:layout="@layout/fragment_forgot_password" />
+        tools:layout="@layout/fragment_forgot_password" >
+    </fragment>
 
     <action
         android:id="@+id/to_splashFragment"
@@ -74,6 +76,9 @@
     <action android:id="@id/to_interestsFragment"
         app:destination="@id/interestsFragment"
         app:popUpTo="@id/main"/>
+
+    <action android:id="@+id/to_searchFragment"
+        app:destination="@id/searchFragment" />
     <fragment
         android:id="@+id/saveFragment"
         android:name="com.example.andronews.presntation.save.SaveFragment"
@@ -89,6 +94,35 @@
         android:name="com.example.andronews.presntation.category.MyInterestsFragment"
         android:label="@string/bottom_nav_myinterests"
         tools:layout="@layout/fragment_myinterests" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.andronews.presntation.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/hotNewsFragment"
+        android:name="com.example.andronews.presntation.home.HotNewsFragment"
+        android:label="fragment_hotnews"
+        tools:layout="@layout/fragment_home_tab_hot" >
+        <action
+            android:id="@+id/action_hotNewsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabItemsFragment"
+        tools:layout="@layout/fragment_home_tab_items"
+        android:name="com.example.andronews.presntation.home.TabItemsFragment"
+        android:label="TabItemsFragment" >
+
+        <action
+            android:id="@+id/action_tabItemsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.andronews.presntation.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 
 
 </navigation>

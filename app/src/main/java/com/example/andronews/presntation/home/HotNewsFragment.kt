@@ -5,20 +5,28 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import com.example.andronews.R
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.News
-import com.example.andronews.databinding.FragmentHotnewsBinding
+import com.example.andronews.databinding.FragmentHomeTabHotBinding
 import com.example.andronews.presntation.home.adapters.BannerAdapter
 import com.example.andronews.presntation.home.adapters.NewsAdapter
 import com.example.andronews.presntation.home.viewModels.TabItemsViewModel
 import com.example.andronews.util.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HotNewsFragment : BaseFragment<FragmentHotnewsBinding>(FragmentHotnewsBinding::inflate) {
+class HotNewsFragment : BaseFragment<FragmentHomeTabHotBinding>(FragmentHomeTabHotBinding::inflate) {
 
     private val viewModel by viewModels<TabItemsViewModel>()
+
+    private lateinit var navController: NavController
 
     private val newsAdapter by lazy {
         NewsAdapter(::onClickNews)
@@ -28,7 +36,7 @@ class HotNewsFragment : BaseFragment<FragmentHotnewsBinding>(FragmentHotnewsBind
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.setCategory("")
+        viewModel.setCategory(null)
 
         newsAdapter.addLoadStateListener {
             viewModel.setLoadState(it)
@@ -48,14 +56,15 @@ class HotNewsFragment : BaseFragment<FragmentHotnewsBinding>(FragmentHotnewsBind
 
         viewModel.banners.observe(viewLifecycleOwner) {
             banner.adapter = BannerAdapter(it,::onClickBanner)
-            Log.d("tag","news: $it")
         }
 
-        viewModel.news.observe(viewLifecycleOwner) {
-            viewLifecycleOwner.lifecycleScope.launch {
+
+        lifecycleScope.launch {
+            viewModel.news.collectLatest {
                 newsAdapter.submitData(it)
             }
         }
+
     }
 
 
