@@ -18,6 +18,7 @@ class NewsPagingSource(
 
             val news = newsApi.getNews(
                 categoryId = newsQuery.categoryId,
+                search = newsQuery.search,
                 page = key,
                 size = params.loadSize
             )

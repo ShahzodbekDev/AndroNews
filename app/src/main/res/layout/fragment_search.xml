@@ -55,10 +55,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchResult"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:paddingTop="20dp"
         android:paddingHorizontal="@dimen/activity_horizontal_margin"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,25 +74,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/search_empty_result"/>
+            android:src="@drawable/search_empty_result" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_news_title"
-            android:textSize="18sp"
             android:layout_gravity="center"
             android:fontFamily="@font/avenir_light"
-            android:textColor="@color/silver_chalice"/>
+            android:text="@string/search_news_title"
+            android:textColor="@color/silver_chalice"
+            android:textSize="18sp" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:elevation="4dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:indeterminateTint="@color/ruby_red"
+        android:indeterminateTintMode="src_atop"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchToolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

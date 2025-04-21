@@ -1,6 +1,5 @@
 package com.example.andronews.domain.repo
 
-import androidx.lifecycle.LiveData
 import androidx.paging.PagingData
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.Category

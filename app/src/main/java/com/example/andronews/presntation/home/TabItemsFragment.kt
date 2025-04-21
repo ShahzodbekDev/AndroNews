@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.News
@@ -17,7 +18,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TabItemsFragment : BaseFragment<FragmentHomeTabItemsBinding>(FragmentHomeTabItemsBinding::inflate) {
+class TabItemsFragment :
+    BaseFragment<FragmentHomeTabItemsBinding>(FragmentHomeTabItemsBinding::inflate) {
 
     private val viewModel by viewModels<TabItemsViewModel>()
 
@@ -50,12 +52,11 @@ class TabItemsFragment : BaseFragment<FragmentHomeTabItemsBinding>(FragmentHomeT
             banner.adapter = BannerAdapter(it, ::onClickBanner)
         }
 
-        lifecycleScope.launch {
-            viewModel.news.collectLatest {
+        viewModel.news.observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
                 newsAdapter.submitData(it)
             }
         }
-
 
     }
 

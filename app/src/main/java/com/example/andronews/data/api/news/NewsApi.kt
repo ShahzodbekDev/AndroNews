@@ -21,6 +21,7 @@ interface NewsApi {
     @GET("news")
     suspend fun getNews(
         @Query("category_id") categoryId : String?,
+        @Query("search") search : String?,
         @Query("page") page : Int,
         @Query("size") size : Int
     ): List<News>

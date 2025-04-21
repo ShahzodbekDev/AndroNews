@@ -1,6 +1,7 @@
 package com.example.andronews.domain.model
 
-class NewsQuery(
-    val categoryId: String? = null
+data class NewsQuery(
+    val categoryId: String? = null,
+    val search : String? = null
 )
 

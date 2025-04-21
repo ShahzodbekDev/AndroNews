@@ -57,14 +57,11 @@ class HotNewsFragment : BaseFragment<FragmentHomeTabHotBinding>(FragmentHomeTabH
         viewModel.banners.observe(viewLifecycleOwner) {
             banner.adapter = BannerAdapter(it,::onClickBanner)
         }
-
-
-        lifecycleScope.launch {
-            viewModel.news.collectLatest {
+        viewModel.news.observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
                 newsAdapter.submitData(it)
             }
         }
-
     }
 
 

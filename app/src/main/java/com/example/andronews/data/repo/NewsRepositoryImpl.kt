@@ -3,16 +3,14 @@ package com.example.andronews.data.repo
 import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.liveData
+import androidx.paging.PagingData
 import com.example.andronews.data.api.news.NewsApi
-import com.example.andronews.data.api.news.dto.Banner
-import com.example.andronews.data.api.news.dto.DetailsResponse
 import com.example.andronews.data.api.news.paging.NewsPagingSource
 import com.example.andronews.data.api.news.dto.FollowRequest
 import com.example.andronews.data.api.news.dto.News
-import com.example.andronews.data.store.UserStore
 import com.example.andronews.domain.model.NewsQuery
 import com.example.andronews.domain.repo.NewsRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class NewsRepositoryImpl @Inject constructor(
@@ -27,6 +25,7 @@ class NewsRepositoryImpl @Inject constructor(
         val response = newsApi.followToggle(request)
         Log.d("tag", "id:$categoryId $response")
     }
+
 
 
     override fun getNews(newsQuery: NewsQuery) = Pager(
