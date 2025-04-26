@@ -2,7 +2,7 @@ package com.example.andronews.data.api.news
 
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.Category
-import com.example.andronews.data.api.news.dto.DetailsResponse
+import com.example.andronews.data.api.news.dto.Detail
 import com.example.andronews.data.api.news.dto.FollowRequest
 import com.example.andronews.data.api.news.dto.FollowResponse
 import com.example.andronews.data.api.news.dto.News
@@ -27,7 +27,7 @@ interface NewsApi {
     ): List<News>
 
     @GET("news/{id}")
-    suspend fun getNewsDetails(@Path("id") id :Int): DetailsResponse
+    suspend fun getDetails(@Path("id") id :String): Detail
 
     @GET("news/categories")
     suspend fun getCategory(): List<Category>

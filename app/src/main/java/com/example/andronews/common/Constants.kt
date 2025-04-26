@@ -1,5 +1,5 @@
 package com.example.andronews.common
 
 object Constants {
-   const val HOST = "https://dc3b3984-d1c4-4e34-8db0-a07313ff9247.mock.pstmn.io/"//.io
+   const val HOST = "https://a040db02-498b-47d8-803c-456d5a025572.mock.pstmn.io/"//.io
 }

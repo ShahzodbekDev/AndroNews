@@ -1,7 +1,6 @@
 package com.example.andronews.data.api.news.dto
 
 
-import com.example.andronews.data.api.auth.dto.UserDto
 import com.google.gson.annotations.SerializedName
 
 data class Comment(
@@ -12,5 +11,5 @@ data class Comment(
     @SerializedName("text")
     val text: String,
     @SerializedName("user")
-    val user: UserDto
+    val user: ThoughtUser
 )

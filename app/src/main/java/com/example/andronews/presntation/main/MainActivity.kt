@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment,
                 R.id.interestsFragment,
                 R.id.forgotPasswordFragment,
-                R.id.detailsFragment,
+                R.id.detailFragment,
                 R.id.searchFragment
             )
 
@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.signInFragment,
                 R.id.interestsFragment,
                 R.id.forgotPasswordFragment,
-                R.id.detailsFragment,
+                R.id.detailFragment,
                 R.id.searchFragment
 
             )

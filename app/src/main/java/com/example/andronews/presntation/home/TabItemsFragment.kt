@@ -3,8 +3,10 @@ package com.example.andronews.presntation.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.News
@@ -52,11 +54,14 @@ class TabItemsFragment :
             banner.adapter = BannerAdapter(it, ::onClickBanner)
         }
 
-        viewModel.news.observe(viewLifecycleOwner) {
-            lifecycleScope.launch {
-                newsAdapter.submitData(it)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.news.collectLatest {
+                    newsAdapter.submitData(it)
+                }
             }
         }
+
 
     }
 
@@ -93,7 +98,7 @@ class TabItemsFragment :
     }
 
     private fun onClickNews(news: News) {
-        findNavController().navigate(TabItemsFragmentDirections.actionTabItemsFragmentToDetailsFragment())
+
     }
 
 }

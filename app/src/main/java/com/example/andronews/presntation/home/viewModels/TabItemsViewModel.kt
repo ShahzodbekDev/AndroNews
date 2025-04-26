@@ -13,11 +13,10 @@ import com.example.andronews.data.api.news.dto.News
 import com.example.andronews.domain.model.NewsQuery
 import com.example.andronews.domain.repo.NewsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,8 +32,10 @@ class TabItemsViewModel @Inject constructor(
 
     val banners = MutableLiveData<List<Banner>>()
 
-    val news = MutableLiveData<PagingData<News>>()
+//    val news = MutableLiveData<PagingData<News>>()
 
+    private val _news = MutableStateFlow<PagingData<News>>(PagingData.empty())
+    val news: StateFlow<PagingData<News>> = _news
 
     init {
         getBanners()
@@ -53,16 +54,27 @@ class TabItemsViewModel @Inject constructor(
         }
     }
 
-    private var newsJob: Job? = null
+//    private var newsJob: Job? = null
+//
+//    fun getNews() {
+//        newsJob?.cancel()
+//        newsJob = viewModelScope.launch {
+//            val query = NewsQuery(categoryId = category.value)
+//            newsRepository.getNews(query).collectLatest {
+//                news.postValue(it)
+//            }
+//        }
+//    }
 
     fun getNews() {
-        newsJob?.cancel()
-        newsJob = viewModelScope.launch {
-            val query = NewsQuery(categoryId = category.value)
-            newsRepository.getNews(query).collectLatest {
-                news.postValue(it)
+        val query = NewsQuery(categoryId = category.value)
+
+        newsRepository.getNews(query)
+            .cachedIn(viewModelScope)
+            .onEach {
+                _news.value = it
             }
-        }
+            .launchIn(viewModelScope)
     }
 
     fun setCategory(categoryId: String?) {
@@ -76,5 +88,6 @@ class TabItemsViewModel @Inject constructor(
         this.loading.postValue(loading)
     }
 }
+
 
 

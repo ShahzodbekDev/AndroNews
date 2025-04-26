@@ -56,6 +56,9 @@
         android:name="com.example.andronews.presntation.forgor_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
         tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <action
@@ -95,10 +98,16 @@
         android:label="@string/bottom_nav_myinterests"
         tools:layout="@layout/fragment_myinterests" />
     <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.example.andronews.presntation.details.DetailsFragment"
+        android:id="@+id/detailFragment"
+        android:name="com.example.andronews.presntation.details.DetailFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_detail" >
+
+        <argument android:name="id"
+            app:argType="string"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/hotNewsFragment"
         android:name="com.example.andronews.presntation.home.HotNewsFragment"
@@ -106,8 +115,9 @@
         tools:layout="@layout/fragment_home_tab_hot" >
         <action
             android:id="@+id/action_hotNewsFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/tabItemsFragment"
         tools:layout="@layout/fragment_home_tab_items"
@@ -116,7 +126,7 @@
 
         <action
             android:id="@+id/action_tabItemsFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

@@ -48,6 +48,10 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>(Fragm
         send.setOnClickListener {
             viewModel.forgotPassword(email.text.toString())
         }
+
+        continueBtn.setOnClickListener {
+            findNavController().navigate(ForgotPasswordFragmentDirections.toDetailFragment(""))
+        }
     }
 
 }
