@@ -24,7 +24,7 @@
         android:layout_marginTop="20dp"
         android:drawablePadding="7dp"
         android:fontFamily="@font/museo_regular"
-        android:text="@string/details_comments_title"
+        android:text="@string/Item_comments_title"
         android:textColor="@color/charcoal_gray"
         android:textSize="22sp"
         app:drawableStartCompat="@drawable/ic_text_divider"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:drawablePadding="10dp"
-        android:text="@string/details_comments_count"
+        android:text="@string/item_comments_count"
         app:drawableStartCompat="@drawable/ic_comment"
         app:layout_constraintBaseline_toBaselineOf="@id/commentsTitle"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -75,9 +75,8 @@
     <string name="details_news_view_users">%d</string>
     <string name="search_input_hint">Search</string>
     <string name="search_news_title">Search news</string>
-    <string name="details_other_news_title">Other News</string>
-    <string name="details_comments_title">Comments</string>
-    <string name="details_comments_count">%d</string>
+    <string name="Item_comments_title">%s</string>
+    <string name="item_comments_count">%d</string>
     <string name="item_other_news_title">%s</string>
     <string name="item_other_news_category_name">%s</string>
     <string name="item_comments_comment_add_time">%s</string>
@@ -86,4 +85,6 @@
     <string name="item_comments_comment_title">%s</string>
     <string name="fragment_detail_all_comments">All comments</string>
     <string name="fragment_detail_leave_comment">Leave comment</string>
+    <string name="fragment_comments_title">Comments</string>
+    <string name="detail_share">Share</string>
 </resources>

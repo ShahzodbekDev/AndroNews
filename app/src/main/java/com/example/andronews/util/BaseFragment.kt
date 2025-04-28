@@ -32,4 +32,5 @@ abstract class BaseFragment<VB : ViewBinding>(
         _binding = null
     }
 
+
 }

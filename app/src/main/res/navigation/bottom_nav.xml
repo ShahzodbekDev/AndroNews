@@ -9,8 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.andronews.presntation.home.HomeFragment"
         android:label="@string/bottom_nav_home"
-        tools:layout="@layout/fragment_home" >
-    </fragment>
+        tools:layout="@layout/fragment_home"/>
 
 
     <fragment
@@ -33,10 +32,13 @@
         android:name="com.example.andronews.presntation.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
+
         <action
             android:id="@+id/to_interestsFragment"
             app:destination="@id/interestsFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/interestsFragment"
         android:name="com.example.andronews.presntation.category.CategoryFragment"
@@ -46,65 +48,82 @@
             android:id="@+id/to_signInFragment"
             app:destination="@id/signInFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/signupFragment"
         android:name="com.example.andronews.presntation.sign_up.SignupFragment"
         android:label="SignupFragment"
         tools:layout="@layout/fragment_sign_up" />
+
+
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.andronews.presntation.forgor_password.ForgotPasswordFragment"
         android:label="ForgotPasswordFragment"
-        tools:layout="@layout/fragment_forgot_password" >
-        <action
-            android:id="@+id/to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_forgot_password"/>
 
     <action
         android:id="@+id/to_splashFragment"
         app:destination="@id/splashFragment"
-        app:popUpTo="@id/main"/>
+        app:popUpTo="@id/main" />
 
     <action
         android:id="@+id/to_signInFragment"
         app:destination="@id/signInFragment"
-        app:popUpTo="@id/main"/>
+        app:popUpTo="@id/main" />
 
     <action
         android:id="@+id/to_homeFragment"
         app:destination="@+id/homeFragment"
-        app:popUpTo="@id/main"/>
+        app:popUpTo="@id/main" />
 
-    <action android:id="@id/to_interestsFragment"
+    <action
+        android:id="@id/to_interestsFragment"
         app:destination="@id/interestsFragment"
-        app:popUpTo="@id/main"/>
+        app:popUpTo="@id/main" />
 
-    <action android:id="@+id/to_searchFragment"
+    <action
+        android:id="@+id/to_searchFragment"
         app:destination="@id/searchFragment" />
+
     <fragment
         android:id="@+id/saveFragment"
         android:name="com.example.andronews.presntation.save.SaveFragment"
         android:label="fragment_save"
         tools:layout="@layout/fragment_save" />
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.andronews.presntation.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/myInterestsFragment"
         android:name="com.example.andronews.presntation.category.MyInterestsFragment"
         android:label="@string/bottom_nav_myinterests"
         tools:layout="@layout/fragment_myinterests" />
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.andronews.presntation.details.DetailFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
 
-        <argument android:name="id"
-            app:argType="string"/>
+        <deepLink
+            android:autoVerify="true"
+            app:uri="a040db02-498b-47d8-803c-456d5a025572.mock.pstmn.io/news/{id}"/>
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/to_commentsFragment"
+            app:destination="@id/commentsFragment" />
+        <action
+            android:id="@+id/action_detailFragment_self"
+            app:destination="@id/detailFragment" />
 
     </fragment>
 
@@ -112,27 +131,44 @@
         android:id="@+id/hotNewsFragment"
         android:name="com.example.andronews.presntation.home.HotNewsFragment"
         android:label="fragment_hotnews"
-        tools:layout="@layout/fragment_home_tab_hot" >
+        tools:layout="@layout/fragment_home_tab_hot">
         <action
-            android:id="@+id/action_hotNewsFragment_to_detailsFragment"
+            android:id="@+id/to_detailsFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/tabItemsFragment"
-        tools:layout="@layout/fragment_home_tab_items"
         android:name="com.example.andronews.presntation.home.TabItemsFragment"
-        android:label="TabItemsFragment" >
+        android:label="TabItemsFragment"
+        tools:layout="@layout/fragment_home_tab_items">
 
         <action
-            android:id="@+id/action_tabItemsFragment_to_detailsFragment"
+            android:id="@+id/to_detailsFragment"
             app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.andronews.presntation.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/to_detailFragment"
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/searchFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/commentsFragment"
+        android:name="com.example.andronews.presntation.details.CommentsFragment"
+        android:label="fragment_comments"
+        tools:layout="@layout/fragment_comments">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+    </fragment>
 
 
 </navigation>

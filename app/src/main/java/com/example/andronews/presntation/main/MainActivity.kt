@@ -8,12 +8,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.andronews.MainDirections
 import com.example.andronews.R
 import com.example.andronews.databinding.ActivityMainBinding
 import com.example.andronews.domain.model.Destination
+import com.example.andronews.presntation.details.DetailFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateTo(destination: Destination) {
+        if (navController.currentDestination?.id == R.id.detailFragment) return
         when (destination) {
             Destination.Home -> navController.navigate(MainDirections.toHomeFragment())
             Destination.SignIn -> navController.navigate(MainDirections.toSignInFragment())
@@ -65,7 +68,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.interestsFragment,
                 R.id.forgotPasswordFragment,
                 R.id.detailFragment,
-                R.id.searchFragment
+                R.id.searchFragment,
+                R.id.commentsFragment
             )
 
 
@@ -76,7 +80,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.interestsFragment,
                 R.id.forgotPasswordFragment,
                 R.id.detailFragment,
-                R.id.searchFragment
+                R.id.searchFragment,
+                R.id.commentsFragment
+
 
             )
 

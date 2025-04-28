@@ -4,6 +4,8 @@ package com.example.andronews.data.api.news.dto
 import com.google.gson.annotations.SerializedName
 
 data class Section(
+    @SerializedName("comment_count")
+    val commentCount: Int,
     @SerializedName("comments")
     val comments: List<Comment>,
     @SerializedName("id")

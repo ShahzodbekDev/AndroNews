@@ -108,6 +108,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
     }
 
     private fun onClickNews(news: News) {
-
+        findNavController().navigate(SearchFragmentDirections.toDetailFragment(news.id))
     }
 }

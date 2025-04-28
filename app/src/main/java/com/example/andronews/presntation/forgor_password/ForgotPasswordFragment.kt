@@ -16,7 +16,8 @@ import com.example.andronews.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>(FragmentForgotPasswordBinding::inflate) {
+class ForgotPasswordFragment :
+    BaseFragment<FragmentForgotPasswordBinding>(FragmentForgotPasswordBinding::inflate) {
 
     private val viewModel by viewModels<ForgotPasswordViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -28,7 +29,7 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>(Fragm
     }
 
     private fun subscribeToLiveData() = with(binding) {
-        viewModel.loading.observe(viewLifecycleOwner){ isLoading ->
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
             progressBar.isVisible = isLoading
             send.text = if (isLoading) null else getString(R.string.forgot_password_send)
         }
@@ -47,10 +48,6 @@ class ForgotPasswordFragment : BaseFragment<FragmentForgotPasswordBinding>(Fragm
         clearLightStatusBar()
         send.setOnClickListener {
             viewModel.forgotPassword(email.text.toString())
-        }
-
-        continueBtn.setOnClickListener {
-            findNavController().navigate(ForgotPasswordFragmentDirections.toDetailFragment(""))
         }
     }
 

@@ -3,18 +3,21 @@ package com.example.andronews.presntation.details
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.app.ShareCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.andronews.R
+import com.example.andronews.common.Constants
 import com.example.andronews.data.api.news.dto.Comment
 import com.example.andronews.data.api.news.dto.News
 import com.example.andronews.databinding.FragmentDetailBinding
 import com.example.andronews.presntation.details.adapters.CommentsAdapter
 import com.example.andronews.presntation.details.adapters.OtherNewsAdapter
 import com.example.andronews.presntation.details.adapters.SectionAdapter
+import com.example.andronews.presntation.details.viewModels.DetailViewModel
 import com.example.andronews.util.BaseFragment
 import com.example.andronews.util.getTimeAgo
 import dagger.hilt.android.AndroidEntryPoint
@@ -76,7 +79,6 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
                 ::onClickComment
             )
 
-
         }
     }
 
@@ -85,13 +87,22 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
             findNavController().popBackStack()
         }
 
-        error.root.setOnClickListener {
-            viewModel.getDetail(args.id)
+        share.setOnClickListener {
+            ShareCompat.IntentBuilder(requireContext())
+                .setType("text/plain")
+                .setChooserTitle(R.string.detail_share)
+                .setText(Constants.HOST + "news/${args.id}")
+                .startChooser()
+        }
+
+        allComments.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.toCommentsFragment(args.id))
+            Log.d("tag", "detailId: ${args.id}")
         }
     }
 
     private fun onClickNews(news: News) {
-
+        findNavController().navigate(DetailFragmentDirections.actionDetailFragmentSelf(news.id))
     }
 
     private fun onClickComment(comment: Comment) {

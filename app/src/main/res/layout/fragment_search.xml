@@ -11,7 +11,6 @@
         android:id="@+id/searchToolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginTop="30dp"
         android:background="@drawable/toolbar_bg"
         android:paddingHorizontal="@dimen/activity_horizontal_margin"
         app:layout_constraintEnd_toEndOf="parent"

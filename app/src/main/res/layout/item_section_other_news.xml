@@ -13,7 +13,7 @@
         android:layout_marginStart="20dp"
         android:drawablePadding="7dp"
         android:fontFamily="@font/museo_regular"
-        android:text="@string/details_other_news_title"
+        android:text="@string/item_other_news_title"
         android:textColor="@color/charcoal_gray"
         android:textSize="22sp"
         app:drawableStartCompat="@drawable/ic_text_divider"

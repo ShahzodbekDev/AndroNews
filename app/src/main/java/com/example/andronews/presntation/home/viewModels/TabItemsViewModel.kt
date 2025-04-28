@@ -32,7 +32,6 @@ class TabItemsViewModel @Inject constructor(
 
     val banners = MutableLiveData<List<Banner>>()
 
-//    val news = MutableLiveData<PagingData<News>>()
 
     private val _news = MutableStateFlow<PagingData<News>>(PagingData.empty())
     val news: StateFlow<PagingData<News>> = _news
@@ -54,17 +53,6 @@ class TabItemsViewModel @Inject constructor(
         }
     }
 
-//    private var newsJob: Job? = null
-//
-//    fun getNews() {
-//        newsJob?.cancel()
-//        newsJob = viewModelScope.launch {
-//            val query = NewsQuery(categoryId = category.value)
-//            newsRepository.getNews(query).collectLatest {
-//                news.postValue(it)
-//            }
-//        }
-//    }
 
     fun getNews() {
         val query = NewsQuery(categoryId = category.value)

@@ -3,6 +3,7 @@ package com.example.andronews.presntation.details.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.andronews.R
 import com.example.andronews.data.api.news.dto.Comment
 import com.example.andronews.data.api.news.dto.News
 import com.example.andronews.data.api.news.dto.Section
@@ -20,6 +21,8 @@ class SectionAdapter(
     inner class OtherNewsHolder(private val binding: ItemSectionOtherNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(section: Section) = with(binding) {
+            otherNewsTitle.text =
+                root.context.getString(R.string.item_other_news_title, section.title)
             otherNewsList.adapter = OtherNewsAdapter(section.otherNew, onClickNews)
         }
     }
@@ -27,7 +30,13 @@ class SectionAdapter(
     inner class CommentsHolder(private val binding: ItemSectionCommentsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(section: Section) = with(binding) {
+            commentsTitle.text =
+                root.context.getString(R.string.item_comments_comment_title, section.title)
+            commentsCount.text =
+                root.context.getString(R.string.item_comments_count, section.commentCount)
+
             commentsList.adapter = CommentsAdapter(section.comments, onClickComment)
+
         }
     }
 

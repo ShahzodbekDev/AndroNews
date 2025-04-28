@@ -8,8 +8,6 @@ data class Detail(
     val addTime: String,
     @SerializedName("category")
     val category: String,
-    @SerializedName("comment_count")
-    val commentCount: Int,
     @SerializedName("description")
     val description: String,
     @SerializedName("id")
