@@ -87,4 +87,10 @@
     <string name="fragment_detail_leave_comment">Leave comment</string>
     <string name="fragment_comments_title">Comments</string>
     <string name="detail_share">Share</string>
+    <string name="fragment_leave_comment_edit_text_hint">Your comments</string>
+    <string name="fragment_leave_comment_leave">Leave</string>
+    <string name="fragment_leave_comment_title">Leave comment</string>
+    <string name="fragment_leave_comment_comment_count">%d</string>
+    <string name="fragment_leave_comment_category_title">%s</string>
+    <string name="fragment_leave_comment_news_title">%s</string>
 </resources>

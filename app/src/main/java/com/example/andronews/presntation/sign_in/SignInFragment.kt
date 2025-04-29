@@ -1,4 +1,4 @@
-package com.example.andronews.presentation.sign_in
+package com.example.andronews.presntation.sign_in
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.andronews.R
 import com.example.andronews.databinding.FragmentSignInBinding
+import com.example.andronews.presentation.sign_in.SignInViewModel
 import com.example.andronews.util.BaseFragment
 import com.example.andronews.util.clearLightStatusBar
 import com.example.andronews.util.toast

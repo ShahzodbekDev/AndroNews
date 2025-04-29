@@ -97,8 +97,12 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
 
         allComments.setOnClickListener {
             findNavController().navigate(DetailFragmentDirections.toCommentsFragment(args.id))
-            Log.d("tag", "detailId: ${args.id}")
         }
+
+        leaveComment.setOnClickListener {
+            findNavController().navigate(DetailFragmentDirections.toLeaveCommentFragment(args.id))
+        }
+
     }
 
     private fun onClickNews(news: News) {

@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/museo_regular"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                    android:paddingHorizontal="@dimen/dp_20"
                     android:text="@string/details_news_title"
                     android:textColor="@color/charcoal_gray"
                     android:textSize="22sp"
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:fontFamily="@font/avenir_light"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                    android:paddingHorizontal="@dimen/dp_20"
                     android:text="@string/details_news_description"
                     android:textSize="18sp"
                     app:layout_constraintTop_toBottomOf="@+id/newsTitle" />
@@ -127,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:orientation="horizontal"
-                    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+                    android:paddingHorizontal="@dimen/dp_20"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/newsDescription">
 
@@ -195,7 +195,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="30dp"
-                    android:background="@drawable/detail_all_comments_background"
+                    android:background="@drawable/red_btn_background"
                     android:fontFamily="@font/avenir_medium"
                     android:text="@string/fragment_detail_all_comments"
                     android:textAllCaps="false"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presntation.details.CommentsFragment">
+    tools:context=".presntation.details.LeaveCommentFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/commentsToolbar"
@@ -30,19 +30,17 @@
             tools:ignore="RtlSymmetry" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fragment_comments_title"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/museo_light"
+            android:text="@string/fragment_leave_comment_title"
             android:textAlignment="center"
-            android:textSize="22sp"
             android:textColor="@color/white"
+            android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -67,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                tools:src="@drawable/image" />
+                android:src="@drawable/image" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -79,7 +77,7 @@
             android:background="@drawable/news_category_title_background"
             android:fontFamily="@font/museo_light"
             android:gravity="center"
-            android:text="@string/news_category_title"
+            android:text="@string/fragment_leave_comment_category_title"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/materialCardView4"
@@ -89,12 +87,12 @@
             android:id="@+id/commentCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_20"
             android:drawablePadding="6dp"
             android:fontFamily="@font/avenir_light"
-            android:text="@string/news_comment_count"
+            android:text="@string/fragment_leave_comment_comment_count"
             android:textColor="@color/silver_chalice"
             android:textSize="14sp"
-            android:layout_marginEnd="@dimen/dp_20"
             app:drawableStartCompat="@drawable/ic_comment"
             app:layout_constraintBottom_toBottomOf="@+id/categoryTitle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,12 +103,11 @@
             android:id="@+id/newsTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginHorizontal="@dimen/dp_20"
             android:fontFamily="@font/avenir_medium"
-            android:text="@string/news_title"
+            android:text="@string/fragment_leave_comment_news_title"
             android:textColor="@color/charcoal_gray"
             android:textSize="16sp"
-            android:layout_marginEnd="@dimen/dp_20"
             app:layout_constraintBottom_toBottomOf="@+id/materialCardView4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/materialCardView4"
@@ -128,47 +125,58 @@
             app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/commentsList"
+        <EditText
+            android:id="@+id/commentInput"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:clipChildren="false"
-            android:paddingTop="@dimen/dp_20"
-            android:clipToPadding="false"
-            android:paddingStart="@dimen/dp_20"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="183dp"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/enter_commend_input_background"
+            android:fontFamily="@font/avenir_light"
+            android:gravity="start"
+            android:hint="@string/fragment_leave_comment_edit_text_hint"
+            android:maxLength="200"
+            android:padding="@dimen/dp_20"
+            android:textColor="@color/carbon_gray"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:layout_constraintBottom_toTopOf="@id/leaveComment"
-            tools:listitem="@layout/item_comments"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/leaveComment"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/detail_leave_comment_background"
+            android:layout_marginHorizontal="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@drawable/red_btn_background"
             android:fontFamily="@font/avenir_medium"
-            android:text="@string/fragment_detail_leave_comment"
+            android:text="@string/fragment_leave_comment_leave"
             android:textAllCaps="false"
             android:textSize="16sp"
-            android:layout_marginVertical="@dimen/dp_20"
-            android:layout_marginHorizontal="@dimen/dp_20"
             app:backgroundTint="@null"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/commentsList" />
+            app:layout_constraintTop_toBottomOf="@id/commentInput" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:elevation="4dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/white"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/leaveComment"
+            app:layout_constraintEnd_toEndOf="@+id/leaveComment"
+            app:layout_constraintStart_toStartOf="@+id/leaveComment"
+            app:layout_constraintTop_toTopOf="@+id/leaveComment" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <include android:id="@+id/loading"
-        layout="@layout/view_loading"/>
-
-    <include android:id="@+id/erorr"
-        layout="@layout/view_error"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.andronews.presentation.sign_in.SignInFragment"
+        android:name="com.example.andronews.presntation.sign_in.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in">
         <action
@@ -118,12 +118,16 @@
         <argument
             android:name="id"
             app:argType="string" />
+
         <action
             android:id="@+id/to_commentsFragment"
             app:destination="@id/commentsFragment" />
         <action
             android:id="@+id/action_detailFragment_self"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/to_leaveCommentFragment"
+            app:destination="@id/leaveCommentFragment" />
 
     </fragment>
 
@@ -163,6 +167,17 @@
         android:name="com.example.andronews.presntation.details.CommentsFragment"
         android:label="fragment_comments"
         tools:layout="@layout/fragment_comments">
+
+        <argument
+            android:name="id"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/leaveCommentFragment"
+        android:name="com.example.andronews.presntation.details.LeaveCommentFragment"
+        android:label="fragment_leave_comment"
+        tools:layout="@layout/fragment_leave_comment" >
 
         <argument
             android:name="id"

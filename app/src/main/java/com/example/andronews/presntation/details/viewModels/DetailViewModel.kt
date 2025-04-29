@@ -7,9 +7,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.andronews.data.api.news.dto.Comment
 import com.example.andronews.data.api.news.dto.Detail
 import com.example.andronews.domain.repo.NewsRepository
+import com.example.andronews.presentation.sign_in.SignInViewModel
+import com.example.andronews.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.logging.HttpLoggingInterceptor
+import okio.IOException
+import retrofit2.HttpException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,6 +24,7 @@ class DetailViewModel @Inject constructor(
 
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
+    val events = SingleLiveEvent<Event>()
 
 
     val detail = MutableLiveData<Detail>()
@@ -49,6 +55,29 @@ class DetailViewModel @Inject constructor(
             loading.postValue(false)
         }
 
+    }
+
+    fun addComment(id: String, commentText: String) = viewModelScope.launch(Dispatchers.IO) {
+        loading.postValue(true)
+        try {
+            newsRepository.addComment(id, commentText)
+        } catch (e: Exception) {
+            when {
+                e is HttpException && e.code() == 404 -> events.postValue(DetailViewModel.Event.InvalidCredentials)
+
+                e is IOException -> events.postValue(DetailViewModel.Event.ConnectionError)
+                else -> events.postValue(DetailViewModel.Event.Error)
+
+            }
+        } finally {
+            loading.postValue(false)
+        }
+    }
+
+    sealed class Event {
+        data object InvalidCredentials : Event()
+        data object ConnectionError : Event()
+        data object Error : Event()
     }
 
 }

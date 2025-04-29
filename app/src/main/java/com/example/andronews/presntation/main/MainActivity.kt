@@ -69,7 +69,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.forgotPasswordFragment,
                 R.id.detailFragment,
                 R.id.searchFragment,
-                R.id.commentsFragment
+                R.id.commentsFragment,
+                R.id.leaveCommentFragment
             )
 
 
@@ -81,8 +82,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.forgotPasswordFragment,
                 R.id.detailFragment,
                 R.id.searchFragment,
-                R.id.commentsFragment
-
+                R.id.commentsFragment,
+                R.id.leaveCommentFragment
 
             )
 

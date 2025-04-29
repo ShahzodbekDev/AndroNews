@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.example.andronews.data.api.news.NewsApi
+import com.example.andronews.data.api.news.dto.AddCommentRequest
 import com.example.andronews.data.api.news.dto.Comment
 import com.example.andronews.data.api.news.paging.NewsPagingSource
 import com.example.andronews.data.api.news.dto.FollowRequest
@@ -41,5 +42,13 @@ class NewsRepositoryImpl @Inject constructor(
 
 
     override suspend fun getComments(id: String) = newsApi.getComments(id)
+
+
+    override suspend fun addComment(id: String, commentText: String) {
+        val request = AddCommentRequest(commentText)
+        val response = newsApi.addComment(id, request)
+        Log.d("tag", "newsId: $id, status: $response, commentText: $commentText")
+
+    }
 
 }

@@ -19,12 +19,15 @@ import com.example.andronews.util.BaseFragment
 import com.example.andronews.util.hideKeyboard
 import com.example.andronews.util.showKeyboard
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding::inflate) {
 
     private val viewModel by viewModels<SearchViewModel>()
+
+    private var submitJob: Job? = null
 
     private val searchResultAdapter by lazy {
         SearchResultAdapter(::onClickNews)
@@ -65,6 +68,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(FragmentSearchBinding
 
             }
         }
+
     }
 
     private fun initUi() = with(binding) {

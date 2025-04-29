@@ -1,5 +1,7 @@
 package com.example.andronews.data.api.news
 
+import com.example.andronews.data.api.news.dto.AddCommentRequest
+import com.example.andronews.data.api.news.dto.AddCommentResponse
 import com.example.andronews.data.api.news.dto.Banner
 import com.example.andronews.data.api.news.dto.Category
 import com.example.andronews.data.api.news.dto.Comment
@@ -17,27 +19,34 @@ interface NewsApi {
 
 
     @GET("banners")
-    suspend fun getBanners() : List<Banner>
+    suspend fun getBanners(): List<Banner>
 
     @GET("news")
     suspend fun getNews(
-        @Query("category_id") categoryId : String?,
-        @Query("search") search : String?,
-        @Query("page") page : Int,
-        @Query("size") size : Int
+        @Query("category_id") categoryId: String?,
+        @Query("search") search: String?,
+        @Query("page") page: Int,
+        @Query("size") size: Int
     ): List<News>
 
     @GET("news/{id}")
-    suspend fun getDetails(@Path("id") id : String): Detail
+    suspend fun getDetails(@Path("id") id: String): Detail
 
     @GET("news/{id}/comments")
-    suspend fun getComments(@Path("id") id : String): List<Comment>
+    suspend fun getComments(@Path("id") id: String): List<Comment>
+
+    @POST("news/{id}/comments")
+    suspend fun addComment(
+        @Path("id") id: String,
+        @Body request: AddCommentRequest
+    ): AddCommentResponse
 
     @GET("news/categories")
     suspend fun getCategory(): List<Category>
 
     @POST("news/follow-toggle")
     suspend fun followToggle(@Body request: FollowRequest): FollowResponse
+
 
 }
 
