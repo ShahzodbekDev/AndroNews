@@ -26,14 +26,14 @@ class SignupFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
 
     private fun subscribeToLiveData() = with(binding) {
 
-        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            progressBar.isVisible = isLoading
-            register.text = if (isLoading) null else getString(R.string.sign_up_register_text)
+        viewModel.loading.observe(viewLifecycleOwner) {
+            progressBar.isVisible = it
+            register.text = if (it) null else getString(R.string.sign_up_register_text)
         }
 
-        viewModel.events.observe(viewLifecycleOwner) { event ->
+        viewModel.events.observe(viewLifecycleOwner) {
 
-            when (event) {
+            when (it) {
                 SignupViewModel.Event.ConnectionError -> toast(R.string.connection_error)
                 SignupViewModel.Event.Error -> toast(R.string.error)
                 SignupViewModel.Event.AlreadyRegistered -> toast(R.string.already_registered)

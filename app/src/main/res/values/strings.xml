@@ -80,7 +80,7 @@
     <string name="item_other_news_title">%s</string>
     <string name="item_other_news_category_name">%s</string>
     <string name="item_comments_comment_add_time">%s</string>
-    <string name="item_comments_replay">Reply</string>
+    <string name="item_comments_reply">Reply</string>
     <string name="item_comments_user_name">%s</string>
     <string name="item_comments_comment_title">%s</string>
     <string name="fragment_detail_all_comments">All comments</string>
@@ -93,4 +93,9 @@
     <string name="fragment_leave_comment_comment_count">%d</string>
     <string name="fragment_leave_comment_category_title">%s</string>
     <string name="fragment_leave_comment_news_title">%s</string>
+    <string name="fragment_reply_comment_title">Reply to comments</string>
+    <string name="fragment_reply_comment_comment_add_time">%s</string>
+    <string name="fragment_reply_comment_comment_title">%s</string>
+    <string name="fragment_reply_comment_user_name">%s</string>
+    <string name="fragment_reply_comment_reply">Reply</string>
 </resources>

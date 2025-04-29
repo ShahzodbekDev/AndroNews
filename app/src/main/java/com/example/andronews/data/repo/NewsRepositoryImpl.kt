@@ -44,6 +44,9 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun getComments(id: String) = newsApi.getComments(id)
 
 
+    override suspend fun getSingleComment(nid: String, cid: Int) = newsApi.getSingleComment(nid,cid)
+
+
     override suspend fun addComment(id: String, commentText: String) {
         val request = AddCommentRequest(commentText)
         val response = newsApi.addComment(id, request)

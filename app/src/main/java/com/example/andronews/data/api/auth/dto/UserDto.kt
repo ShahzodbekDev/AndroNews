@@ -4,11 +4,14 @@ import com.example.andronews.domain.model.User
 import com.google.gson.annotations.SerializedName
 
 data class UserDto(
-    @SerializedName("username")
-    val username : String
+    @SerializedName("user_name")
+    val username : String,
+    @SerializedName("avatar")
+    val avatar : String
 ){
     fun toUser() = User(
-        username = username
+        username = username,
+        avatar = avatar
     )
 
 }

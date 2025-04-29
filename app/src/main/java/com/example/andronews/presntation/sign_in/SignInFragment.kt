@@ -28,14 +28,14 @@ class SignInFragment : BaseFragment<FragmentSignInBinding>(FragmentSignInBinding
 
     private fun subscribeToLiveData() = with(binding) {
 
-        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            progressBar.isVisible = isLoading
-            login.text = if (isLoading) null else getString(R.string.fragment_sign_in_login)
+        viewModel.loading.observe(viewLifecycleOwner) {
+            progressBar.isVisible = it
+            login.text = if (it) null else getString(R.string.fragment_sign_in_login)
         }
 
-        viewModel.events.observe(viewLifecycleOwner) { event ->
+        viewModel.events.observe(viewLifecycleOwner) {
 
-            when (event) {
+            when (it) {
                 SignInViewModel.Event.ConnectionError -> toast(R.string.connection_error)
                 SignInViewModel.Event.Error -> toast(R.string.error)
                 SignInViewModel.Event.InvalidCredentials -> toast(R.string.invalid_credentials)

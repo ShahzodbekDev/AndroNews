@@ -11,7 +11,7 @@ data class Detail(
     @SerializedName("description")
     val description: String,
     @SerializedName("id")
-    val id: Int,
+    val id: String,
     @SerializedName("image")
     val image: String,
     @SerializedName("is_save")

@@ -21,19 +21,19 @@ import com.example.andronews.util.BaseFragment
 import com.example.andronews.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import android.text.TextWatcher
+import com.example.andronews.databinding.FragmentReplyCommentBinding
+import com.example.andronews.util.getTimeAgo
 
 @AndroidEntryPoint
-class LeaveCommentFragment :
-    BaseFragment<FragmentLeaveCommentBinding>(FragmentLeaveCommentBinding::inflate) {
+class ReplyCommentFragment :
+    BaseFragment<FragmentReplyCommentBinding>(FragmentReplyCommentBinding::inflate) {
 
     private val viewModel by viewModels<DetailViewModel>()
-    private val args by navArgs<LeaveCommentFragmentArgs>()
+    private val args by navArgs<ReplyCommentFragmentArgs>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val ids = args.id
-        viewModel.getDetail(ids)
-        viewModel.getComments(ids)
+        viewModel.getSingleComment("fvdvfb", args.id)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,8 +47,8 @@ class LeaveCommentFragment :
     private fun subscribeToLiveData() = with(binding) {
         viewModel.sendProgress.observe(viewLifecycleOwner) {
             progressBar.isVisible = it
-            leaveComment.text =
-                if (it) null else getString(R.string.fragment_leave_comment_leave)
+            replyComment.text =
+                if (it) null else getString(R.string.fragment_reply_comment_reply)
         }
 
         viewModel.events.observe(viewLifecycleOwner) {
@@ -59,14 +59,14 @@ class LeaveCommentFragment :
             }
         }
 
-        viewModel.detail.observe(viewLifecycleOwner) {
-            Glide.with(root).load(it.image).into(image)
-            categoryTitle.text =
-                getString(R.string.fragment_leave_comment_category_title, it.category)
-            newsTitle.text = getString(R.string.fragment_leave_comment_news_title, it.title)
-        }
-        viewModel.comments.observe(viewLifecycleOwner) {
-            commentCount.text = getString(R.string.fragment_leave_comment_comment_count, it.size)
+        viewModel.singleComment.observe(viewLifecycleOwner) {
+            Glide.with(root).load(it.user.avatar).into(avatar)
+            userName.text =
+                getString(R.string.fragment_reply_comment_user_name, it.user.username)
+            commentTitle.text = getString(R.string.fragment_reply_comment_comment_title, it.commentText)
+
+            val addTimeAgo = getTimeAgo(it.addTime)
+            commendAddTime.text = getString(R.string.fragment_reply_comment_comment_add_time, addTimeAgo)
         }
     }
 
@@ -76,12 +76,12 @@ class LeaveCommentFragment :
             findNavController().popBackStack()
         }
 
-        leaveComment.setOnClickListener {
-            viewModel.addComment(args.id, commentInput.text.toString())
+        replyComment.setOnClickListener {
+
         }
 
-        leaveComment.isEnabled = false
-        leaveComment.background = ContextCompat.getDrawable(requireContext(),R.drawable.button_inactive)
+        replyComment.isEnabled = false
+        replyComment.background = ContextCompat.getDrawable(requireContext(),R.drawable.button_inactive)
 
         commentInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -90,8 +90,8 @@ class LeaveCommentFragment :
             override fun afterTextChanged(s: Editable?) {
                 val isTextNotEmpty = !s.isNullOrBlank()
 
-                leaveComment.isEnabled = isTextNotEmpty
-                leaveComment.background = ContextCompat.getDrawable(
+                replyComment.isEnabled = isTextNotEmpty
+                replyComment.background = ContextCompat.getDrawable(
                     requireContext(),
                     if (isTextNotEmpty) R.drawable.red_btn_background else R.drawable.button_inactive
                 )

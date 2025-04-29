@@ -1,6 +1,5 @@
 package com.example.andronews.presntation.details.adapters
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,16 +19,16 @@ class CommentsAdapter(
         fun bind(comment: Comment) = with(binding) {
             Glide.with(root).load(comment.user.avatar).into(avatar)
             userName.text =
-                root.context.getString(R.string.item_comments_user_name, comment.user.userName)
+                root.context.getString(R.string.item_comments_user_name, comment.user.username)
 
             commentTitle.text =
-                root.context.getString(R.string.item_comments_comment_title, comment.text)
+                root.context.getString(R.string.item_comments_comment_title, comment.commentText)
 
             val addTimeAgo = getTimeAgo(comment.addTime)
             commendAddTime.text =
                 root.context.getString(R.string.item_comments_comment_add_time, addTimeAgo)
 
-            replay.setOnClickListener {
+            reply.setOnClickListener {
                 onClick(comment)
             }
 

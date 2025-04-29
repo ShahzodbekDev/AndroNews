@@ -24,11 +24,12 @@ class DetailViewModel @Inject constructor(
 
     val loading = MutableLiveData(false)
     val error = MutableLiveData(false)
+    val sendProgress = MutableLiveData(false)
     val events = SingleLiveEvent<Event>()
-
-
     val detail = MutableLiveData<Detail>()
     val comments = MutableLiveData<List<Comment>>()
+
+    val singleComment = MutableLiveData<Comment>()
 
 
     fun getDetail(id: String) = viewModelScope.launch {
@@ -37,6 +38,7 @@ class DetailViewModel @Inject constructor(
             val response = newsRepository.getDetails(id)
             detail.postValue(response)
         } catch (e: Exception) {
+            Log.d("tag","detailError: $e")
             error.postValue(true)
         } finally {
             loading.postValue(false)
@@ -57,8 +59,9 @@ class DetailViewModel @Inject constructor(
 
     }
 
+
     fun addComment(id: String, commentText: String) = viewModelScope.launch(Dispatchers.IO) {
-        loading.postValue(true)
+        sendProgress.postValue(true)
         try {
             newsRepository.addComment(id, commentText)
         } catch (e: Exception) {
@@ -70,7 +73,25 @@ class DetailViewModel @Inject constructor(
 
             }
         } finally {
-            loading.postValue(false)
+            sendProgress.postValue(false)
+        }
+    }
+
+
+    fun getSingleComment(nid: String, cid: Int) = viewModelScope.launch {
+        sendProgress.postValue(true)
+        try {
+            val response = newsRepository.getSingleComment(nid,cid)
+        } catch (e: Exception) {
+            when {
+                e is HttpException && e.code() == 404 -> events.postValue(DetailViewModel.Event.InvalidCredentials)
+
+                e is IOException -> events.postValue(DetailViewModel.Event.ConnectionError)
+                else -> events.postValue(DetailViewModel.Event.Error)
+
+            }
+        } finally {
+            sendProgress.postValue(false)
         }
     }
 

@@ -21,6 +21,8 @@ interface NewsRepository {
 
     suspend fun getComments(id: String): List<Comment>
 
+    suspend fun getSingleComment(nid: String, cid: Int): Comment
+
     suspend fun addComment(id: String, commentText: String)
 
     fun getNews(newsQuery: NewsQuery): Flow<PagingData<News>>

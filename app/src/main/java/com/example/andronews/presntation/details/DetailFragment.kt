@@ -110,7 +110,7 @@ class DetailFragment : BaseFragment<FragmentDetailBinding>(FragmentDetailBinding
     }
 
     private fun onClickComment(comment: Comment) {
-
+        findNavController().navigate(DetailFragmentDirections.toReplyCommentFragment(comment.id))
     }
 
 }

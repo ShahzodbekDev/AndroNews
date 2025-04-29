@@ -35,6 +35,9 @@ interface NewsApi {
     @GET("news/{id}/comments")
     suspend fun getComments(@Path("id") id: String): List<Comment>
 
+    @GET("news/{nid}/comments/{cid}")
+    suspend fun getSingleComment(@Path("nid") nid: String, @Path("cid") cid: Int) : Comment
+
     @POST("news/{id}/comments")
     suspend fun addComment(
         @Path("id") id: String,

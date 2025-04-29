@@ -1,11 +1,13 @@
 package com.example.andronews.presntation.details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.paging.LOG_TAG
 import com.bumptech.glide.Glide
 import com.example.andronews.R
 import com.example.andronews.data.api.news.dto.Comment
@@ -61,10 +63,15 @@ class CommentsFragment : BaseFragment<FragmentCommentsBinding>(FragmentCommentsB
         back.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        leaveComment.setOnClickListener {
+            findNavController().navigate(CommentsFragmentDirections.toLeaveCommentFragment(args.id))
+            Log.d("tag","id: ${args.id}")
+        }
     }
 
     private fun onClickComment(comment: Comment) {
-
+        findNavController().navigate(CommentsFragmentDirections.toReplyCommentFragment(comment.id))
     }
 
 }

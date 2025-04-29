@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.detailFragment,
                 R.id.searchFragment,
                 R.id.commentsFragment,
-                R.id.leaveCommentFragment
+                R.id.leaveCommentFragment,
+                R.id.replyCommentFragment
             )
 
 
@@ -83,8 +84,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.detailFragment,
                 R.id.searchFragment,
                 R.id.commentsFragment,
-                R.id.leaveCommentFragment
-
+                R.id.leaveCommentFragment,
+                R.id.replyCommentFragment
             )
 
 
